@@ -1,4 +1,4 @@
-# LLM Disposable Web App Demos (ready to publish)
+# LLM Disposable Web App Demos
 
 Everything you need to demo the “single-use web app” workflow with synthetic data only.
 
