@@ -1,0 +1,72 @@
+[
+  {
+    "FakeEmail": "team01@demo.com",
+    "thread_id": "thread_1",
+    "label": "irrelevant",
+    "irrelevant_reason": "non-english",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "team01@demo.com",
+    "thread_id": "thread_2",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "team02@demo.com",
+    "thread_id": "thread_1",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "team03@demo.com",
+    "thread_id": "thread_1",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "team04@demo.com",
+    "thread_id": "thread_1",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "team04@demo.com",
+    "thread_id": "thread_2",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "team04@demo.com",
+    "thread_id": "thread_3",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "team05@demo.com",
+    "thread_id": "thread_1",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "team06@demo.com",
+    "thread_id": "thread_1",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "team06@demo.com",
+    "thread_id": "thread_2",
+    "label": "irrelevant",
+    "irrelevant_reason": "too short",
+    "comment": ""
+  }
+]

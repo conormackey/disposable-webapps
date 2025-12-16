@@ -1,0 +1,100 @@
+[
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_3",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user02@demo.com",
+    "thread_id": "thread_1",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_1",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_2",
+    "label": "irrelevant",
+    "irrelevant_reason": "non-english",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_1",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_3",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_1",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_2",
+    "label": "irrelevant",
+    "irrelevant_reason": "off-task",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_1",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_3",
+    "label": "relevant",
+    "irrelevant_reason": "",
+    "comment": ""
+  }
+]

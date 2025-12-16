@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thread Labeler — Validation Sample (100)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --panel: #ffffff;
+      --border: #e4e6eb;
+      --muted: #5f6b7a;
+      --accent: #0b72ff;
+      --relevant: #2e7d32;
+      --irrelevant: #e91e63;
+    }
+    html, body { height: 100%; }
+    body { margin: 0; background: var(--bg); color: #1b1f24; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+    header { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--border); background: var(--panel); }
+    header h1 { font-size: 16px; margin: 0 8px 0 0; }
+    #wrap { display: grid; grid-template-columns: 320px 1fr; min-height: calc(100% - 52px); }
+    aside { padding: 12px; border-right: 1px solid var(--border); background: var(--panel); }
+    main { padding: 12px; }
+    .section { margin-bottom: 14px; }
+    .section h3 { margin: 0 0 8px 0; font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: .2px; }
+    label { font-size: 13px; color: #2b3138; display: inline-block; margin-bottom: 4px; }
+    input[type="file"], select, textarea { width: 100%; }
+    select, textarea { padding: 8px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; }
+    textarea { min-height: 70px; resize: vertical; }
+    .btn { padding: 8px 12px; border: 1px solid var(--border); background: #fff; border-radius: 8px; cursor: pointer; font-size: 13px; }
+    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btnrow { display: flex; gap: 8px; flex-wrap: wrap; }
+    .hint { font-size: 12px; color: var(--muted); }
+    .kpi { font-size: 13px; color: var(--muted); }
+
+    /* Chat area */
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+    #meta { margin-bottom: 10px; color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    #chat { display: flex; flex-direction: column; gap: 10px; max-height: 60vh; overflow: auto; }
+    .msgwrap { display: flex; flex-direction: column; max-width: 80%; }
+    .msgwrap.user { align-self: flex-end; }
+    .msgwrap.ai { align-self: flex-start; }
+    .bubble { padding: 10px 12px; border-radius: 14px; max-width: 100%; box-shadow: 0 1px 0 rgba(0,0,0,.04); border: 1px solid var(--border); }
+    .bubble.user { background: #e7f0ff; border-color: #c7daff; }
+    .bubble.ai { background: #fff; border-color: #dfe3eb; }
+    .ts { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .ts.right { text-align: right; }
+    .ts.left { text-align: left; }
+
+    .labelbox { margin-top: 12px; }
+    .options { display: grid; grid-template-columns: 1fr; gap: 8px; }
+    .rad { display:flex; align-items:center; gap:8px; }
+    .badge { display:inline-block; padding:2px 8px; border-radius: 999px; font-size: 11px; border: 1px solid var(--border); }
+    .badge.rel { color: var(--relevant); border-color: var(--relevant); }
+    .badge.irr { color: var(--irrelevant); border-color: var(--irrelevant); }
+    .context { margin-top: 12px; }
+    .context h3 { margin: 0 0 8px 0; font-size: 13px; color: var(--muted); font-weight: 700; }
+    #contextInfo { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Thread Labeler — Demo</h1>
+    <button id="resume" class="btn">Resume Saved Session</button>
+    <span id="status" class="hint"></span>
+  </header>
+  <div id="wrap">
+    <aside>
+      <div class="section">
+        <h3>1) Load Sample</h3>
+        <div class="hint">Demo ships with synthetic threads in <code>demo_data/demo_threads.json</code>. You can also load your own JSON.</div>
+        <div class="btnrow" style="margin-top:8px;">
+          <button id="loadDefault" class="btn primary">Load Demo (demo_threads.json)</button>
+        </div>
+        <div style="height:8px"></div>
+        <label>Or choose a sample JSON</label>
+        <input id="sampleFile" type="file" accept=".json" />
+        <div class="btnrow" style="margin-top:8px;">
+          <button id="loadSampleFile" class="btn">Load Selected File</button>
+        </div>
+        <div id="kpi" class="kpi" style="margin-top:8px;"></div>
+      </div>
+      <div class="panel context">
+        <h3>Context in Task 1 Window</h3>
+        <div id="contextInfo"></div>
+        <div id="contextChart" style="height:220px;"></div>
+      </div>
+
+      <div class="section">
+        <h3>2) Session</h3>
+        <div class="btnrow">
+          <button id="exportLabelsCsv" class="btn">Export Labels CSV</button>
+          <button id="exportLabelsJson" class="btn">Export Labels JSON</button>
+          <button id="exportFlaggedXlsx" class="btn">Export Flagged Excel</button>
+          <button id="resetSession" class="btn">Reset Session</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Keyboard</h3>
+        <div class="hint">R = relevant, I = irrelevant, N = next, P = prev.</div>
+      </div>
+    </aside>
+
+    <main>
+      <div class="panel">
+        <div id="meta">
+          <div><strong id="idx">–/–</strong></div>
+          <div id="meta2">&nbsp;</div>
+          <div id="progress">Progress: –</div>
+        </div>
+        <div id="chat"></div>
+
+        <div class="labelbox">
+          <div class="options">
+            <div class="rad">
+              <input type="radio" id="labRel" name="label" value="relevant">
+              <label for="labRel">Relevant <span class="badge rel">relevant</span></label>
+            </div>
+            <div class="rad">
+              <input type="radio" id="labIrr" name="label" value="irrelevant">
+              <label for="labIrr">Irrelevant <span class="badge irr">irrelevant</span></label>
+            </div>
+            <div id="irrBox" style="display:none;">
+              <label for="irrReason">Reason (if irrelevant)</label>
+              <select id="irrReason">
+                <option value="">(choose reason)</option>
+                <option value="task2">task2</option>
+                <option value="training">training</option>
+                <option value="personal">personal</option>
+                <option value="other" selected>other</option>
+              </select>
+            </div>
+            <div>
+              <label for="notes">Notes (optional)</label>
+              <textarea id="notes" placeholder="Add a short comment for this thread (optional)"></textarea>
+            </div>
+            <div class="rad">
+              <input type="checkbox" id="flag" />
+              <label for="flag">Flag for coworker review</label>
+            </div>
+          </div>
+          <div class="btnrow" style="margin-top:8px;">
+            <button id="prev" class="btn">Prev (P)</button>
+            <button id="saveNext" class="btn primary">Save + Next (N)</button>
+            <button id="skip" class="btn">Skip</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    async function ensurePlotly(){
+      if (window.Plotly) return;
+      const srcs = [
+        'https://cdn.plot.ly/plotly-2.30.0.min.js',
+        'https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.30.0/plotly.min.js',
+        'https://unpkg.com/plotly.js-dist-min@2.30.0/plotly.min.js'
+      ];
+      for (const s of srcs){
+        try{ await new Promise((res,rej)=>{ const el=document.createElement('script'); el.src=s; el.onload=res; el.onerror=()=>rej(); document.head.appendChild(el); }); if(window.Plotly) return; }catch(e){}
+      }
+      console.warn('Plotly not available; context chart disabled');
+    }
+
+    async function ensureXlsx(){
+      if (window.XLSX) return;
+      const sources = [
+        'vendor/xlsx.full.min.js',
+        'https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js',
+        'https://unpkg.com/xlsx/dist/xlsx.full.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.19.3/xlsx.full.min.js'
+      ];
+      let lastErr = '';
+      for (const src of sources) {
+        try {
+          await new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = src; s.async = true;
+            s.onload = () => resolve();
+            s.onerror = () => reject(new Error('failed to load ' + src));
+            document.head.appendChild(s);
+          });
+          if (window.XLSX) return;
+        } catch (e) { lastErr = String(e); }
+      }
+      throw new Error('XLSX not available. ' + lastErr);
+    }
+
+    const WINDOWS = {
+      'Continental Europe': { '2024-05-14':[9,12], '2024-07-24':[15,17] },
+      'Latin America': { '2024-05-13':[15,17], '2024-05-15':[14,16], '2024-07-24':[15,18] },
+      'North America': { '2024-05-13':[15,17], '2024-05-15':[14,17], '2024-07-24':[15,17] },
+      'United Kingdom': { '2024-05-14':[9,11] }
+    };
+    function getWindowFor(region, dateY){ const m = WINDOWS[region]||{}; return m[dateY] ? {start:m[dateY][0], end:m[dateY][1]} : null; }
+    function hourFromHM(s){ const m = String(s||'').match(/^(\d{1,2}):(\d{2})/); return m? Math.max(0,Math.min(23,parseInt(m[1],10))) : null; }
+    function getCurrentRadioLabel(){ const rel=document.getElementById('labRel'); const irr=document.getElementById('labIrr'); return rel&&rel.checked?'relevant':(irr&&irr.checked?'irrelevant':''); }
+    function sortMsgs(msgs){ const arr=(msgs||[]).slice(); const num=(s)=>{ const m=String(s||'').match(/(\d+)/); return m?parseInt(m[1],10):Number.MAX_SAFE_INTEGER; }; arr.sort((a,b)=>{ const na=num(a.id), nb=num(b.id); if(na!==nb) return na-nb; const ad=Date.parse((a.date||'')+' '+(a.time||''))||0; const bd=Date.parse((b.date||'')+' '+(b.time||''))||0; return ad-bd; }); return arr; }
+    async function renderContextChart(t){
+      await ensurePlotly();
+      if(!window.Plotly) return;
+      const info=document.getElementById('contextInfo');
+      const el=document.getElementById('contextChart');
+      if(!t){info.textContent=''; Plotly.purge(el); return;}
+      const w=getWindowFor(t.region||'', t.dateYMD||'');
+      if(!w){ info.textContent=`No window defined for ${t.region||''} on ${t.dateYMD||''}`; Plotly.purge(el); return;}
+      info.textContent=`Window for ${t.region} on ${t.dateYMD}: ${w.start}:00–${w.end}:00`;
+
+      // Build hours by GPT label for same region/date
+      const same=STATE.threads.filter(x=>(x.region||'')===(t.region||'') && (x.dateYMD||'')===(t.dateYMD||''));
+      const hoursRel=[]; const hoursIrr=[];
+      same.forEach(x=>{
+        const s=sortMsgs(x.msgs);
+        const h= s.length? hourFromHM(s[0].time): null;
+        if(h==null) return;
+        const gkey = `${x.group}|${x.user}|${x.thread_id}`;
+        // Prefer GPT labels; fallback to session labels if available
+        const lab = (STATE.gptLabelMap && STATE.gptLabelMap.get(gkey)) || ((STATE.labels[x.key]||{}).label || '');
+        if(lab==='relevant') hoursRel.push(h);
+        else if(lab==='irrelevant') hoursIrr.push(h);
+      });
+
+      // Determine x-range from actual data
+      const allHours = hoursRel.concat(hoursIrr);
+      const minH = allHours.length ? Math.min(...allHours) : 0;
+      const maxH = allHours.length ? Math.max(...allHours) : 23;
+      const xStart = Math.max(0, minH);
+      const xEnd = Math.min(23, maxH);
+
+      // Blue for relevant, Red for irrelevant
+      const traces=[
+        {x:hoursRel,type:'histogram',name:'relevant',opacity:0.95,marker:{color:'#1976d2'},xbins:{start:xStart,end:xEnd+1,size:1}},
+        {x:hoursIrr,type:'histogram',name:'irrelevant',opacity:0.95,marker:{color:'#d32f2f'},xbins:{start:xStart,end:xEnd+1,size:1}}
+      ];
+
+      const shapes = (w.start<=w.end)?[
+        {type:'rect',xref:'x',yref:'paper',x0:w.start,x1:w.end,y0:0,y1:1,fillcolor:'rgba(11,114,255,0.10)',line:{width:0}}
+      ]:[
+        {type:'rect',xref:'x',yref:'paper',x0:w.start,x1:23.5,y0:0,y1:1,fillcolor:'rgba(11,114,255,0.10)',line:{width:0}},
+        {type:'rect',xref:'x',yref:'paper',x0:-0.5,x1:w.end,y0:0,y1:1,fillcolor:'rgba(11,114,255,0.10)',line:{width:0}}
+      ];
+
+      Plotly.newPlot(el,traces,{
+        margin:{l:40,r:10,t:10,b:40},
+        xaxis:{title:'hour of day',dtick:1,range:[xStart-0.5, xEnd+0.5]},
+        yaxis:{title:'threads'},
+        barmode:'group',
+        shapes
+      }, {displayModeBar:false});
+
+      // Highlight current thread start hour (if available)
+      const ch=(function(){ const s=sortMsgs(t.msgs); return s.length? hourFromHM(s[0].time): null; })();
+      if(ch!=null) Plotly.addTraces(el,[{x:[ch],y:[0],type:'scatter',mode:'markers',name:'current',marker:{color:'#111',size:10,symbol:'line-ns-open'}}]);
+    }
+    function pad2(n){ return (n<10?"0":"") + n; }
+    function getDateYMD(row){
+      const d = row["Date_x"] || row["Date"] || row["DateTime"];
+      if (d instanceof Date) return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+      if (typeof d === 'number' && window.XLSX && XLSX.SSF && XLSX.SSF.parse_date_code) { const dt=XLSX.SSF.parse_date_code(d); if(dt&&dt.y) return `${dt.y}-${pad2(dt.m)}-${pad2(dt.d)}`; }
+      if (!d) return '';
+      const s = String(d); let m = s.match(/(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/); if(m) return `${m[1]}-${pad2(+m[2])}-${pad2(+m[3])}`; m=s.match(/(\d{1,2})[\/](\d{1,2})[\/](\d{4})/); if(m) return `${m[3]}-${pad2(+m[1])}-${pad2(+m[2])}`; return s;
+    }
+    function getTimeHM(row){
+      let t = row["Time of Day"]; if (t !== undefined && t !== null && t !== '') {
+        if (typeof t === 'number' && window.XLSX && XLSX.SSF && XLSX.SSF.parse_date_code) { const dt=XLSX.SSF.parse_date_code(t); if(dt&&typeof dt.H==='number') return `${pad2(dt.H)}:${pad2(dt.M||0)}`; }
+        const s = String(t).trim(); const m=s.match(/\b(\d{1,2}):(\d{2})/); if(m) return `${pad2(+m[1])}:${m[2]}`; return s;
+      }
+      const d = row["Date_x"] || row["Date"] || row["DateTime"]; if (d instanceof Date) return `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+      if (typeof d === 'number' && window.XLSX && XLSX.SSF && XLSX.SSF.parse_date_code) { const dt=XLSX.SSF.parse_date_code(d); if(dt&&typeof dt.H==='number') return `${pad2(dt.H)}:${pad2(dt.M||0)}`; }
+      const s = String(d||''); const m=s.match(/\b(\d{1,2}):(\d{2})/); if(m) return `${pad2(+m[1])}:${m[2]}`; return '';
+    }
+
+    const SESSION_KEY = 'demo_labeler_v1';
+    const STATE = {
+      // threads loaded from sample JSON
+      threads: [], // { key, user, thread_id, group, region, dateYMD, msgs:[{prompt,time,date}] }
+      sampleKeys: [], // order
+      // labels by key { label, reason, notes, ts }
+      labels: {},
+      // pointer
+      idx: 0,
+      regionColumn: null
+    };
+
+    function saveSession(){
+      localStorage.setItem(SESSION_KEY, JSON.stringify({
+        sampleKeys: STATE.sampleKeys,
+        labels: STATE.labels,
+        idx: STATE.idx,
+        regionColumn: STATE.regionColumn
+      }));
+    }
+    function loadSession(){
+      const s = localStorage.getItem(SESSION_KEY); if(!s) return null; try{return JSON.parse(s);}catch{return null;}
+    }
+    function resetSession(){ localStorage.removeItem(SESSION_KEY); STATE.sampleKeys=[]; STATE.labels={}; STATE.idx=0; }
+
+    function updateKpi(){
+      document.getElementById('kpi').textContent = `Loaded threads: ${STATE.threads.length.toLocaleString()} • Sample size: ${STATE.sampleKeys.length}`;
+    }
+
+    function renderCurrent(){
+      const idxEl = document.getElementById('idx');
+      const meta2 = document.getElementById('meta2');
+      const progress = document.getElementById('progress');
+      const chat = document.getElementById('chat');
+      chat.innerHTML = '';
+      const n = STATE.sampleKeys.length;
+      if (!n) { idxEl.textContent = '–/–'; meta2.textContent=''; progress.textContent='Progress: –'; return; }
+      const key = STATE.sampleKeys[STATE.idx];
+      const t = STATE.threads.find(x => x.key === key);
+      idxEl.textContent = `${STATE.idx+1}/${n}`;
+      meta2.textContent = `${t.group} • ${t.region||'(unknown region)'} • ${t.dateYMD||''} • ${t.user} • ${t.thread_id}`;
+      const done = Object.keys(STATE.labels).length;
+      progress.textContent = `Progress: ${done}/${n} labeled`;
+      // Fill form if labeled
+      const lab = STATE.labels[key] || { label:'', reason:'', notes:'', flagged:false };
+      document.getElementById('labRel').checked = lab.label === 'relevant';
+      document.getElementById('labIrr').checked = lab.label === 'irrelevant';
+      document.getElementById('irrBox').style.display = (lab.label === 'irrelevant') ? 'block' : 'none';
+      document.getElementById('irrReason').value = (lab.label === 'irrelevant') ? (lab.reason || 'other') : '';
+      document.getElementById('notes').value = lab.notes || '';
+      document.getElementById('flag').checked = !!lab.flagged;
+      // Sort messages by numeric id if available, else by date/time
+      const msgs = (t.msgs||[]).slice();
+      const num = (s)=>{ const m = String(s||'').match(/(\d+)/); return m? parseInt(m[1],10) : Number.MAX_SAFE_INTEGER; };
+      msgs.sort((a,b)=>{
+        const na=num(a.id), nb=num(b.id);
+        if (na!==nb) return na-nb;
+        const ad = Date.parse((a.date||'') + ' ' + (a.time||'')) || 0;
+        const bd = Date.parse((b.date||'') + ' ' + (b.time||'')) || 0;
+        if (ad!==bd) return ad-bd;
+        return 0;
+      });
+
+      // Render prompt/response as chat bubbles (user right, AI left)
+      msgs.forEach(m => {
+        const add = (text, role) => {
+          if (!text) return;
+          const wrap = document.createElement('div');
+          wrap.className = 'msgwrap ' + role;
+          const b = document.createElement('div'); b.className = 'bubble ' + role; b.textContent = text;
+          const ts = document.createElement('div'); ts.className = 'ts ' + (role === 'user' ? 'right' : 'left'); ts.textContent = [m.date, m.time].filter(Boolean).join(' ');
+          wrap.appendChild(b); wrap.appendChild(ts); chat.appendChild(wrap);
+        };
+        add(m.prompt, 'user');
+        add(m.response, 'ai');
+      });
+      // Scroll top
+      chat.scrollTop = 0;
+      // Update context chart
+      renderContextChart(t);
+    }
+
+    function saveLabelAndMaybeNext(goNext=true){
+      const key = STATE.sampleKeys[STATE.idx]; if (!key) return;
+      const label = document.getElementById('labRel').checked ? 'relevant' : (document.getElementById('labIrr').checked ? 'irrelevant' : '');
+      const reason = (label === 'irrelevant') ? document.getElementById('irrReason').value : '';
+      const notes = document.getElementById('notes').value.trim();
+      const flagged = document.getElementById('flag').checked;
+      if (!label) { alert('Please pick a label (relevant or irrelevant).'); return; }
+      if (label === 'irrelevant' && !reason) { alert('Please choose an irrelevant reason.'); return; }
+      STATE.labels[key] = { label, reason, notes, flagged, ts: new Date().toISOString() };
+      saveSession();
+      if (goNext) { if (STATE.idx < STATE.sampleKeys.length - 1) { STATE.idx++; saveSession(); renderCurrent(); } }
+      else { renderCurrent(); }
+    }
+
+    function prev(){ if (STATE.idx>0) { STATE.idx--; saveSession(); renderCurrent(); } }
+    function next(){ if (STATE.idx<STATE.sampleKeys.length-1) { STATE.idx++; saveSession(); renderCurrent(); } }
+
+    function exportLabels(kind){
+      const rows = STATE.sampleKeys.map((k,i)=> { const t=STATE.threads.find(x=>x.key===k)||{}; const lab=STATE.labels[k]||{}; return { order:i+1, key:k, user:t.user, thread_id:t.thread_id, group:t.group, region:t.region, dateYMD:t.dateYMD, label:lab.label||'', irrelevant_reason:lab.reason||'', notes:lab.notes||'', flagged: lab.flagged?1:0, labeled_at:lab.ts||'' }; });
+      if (kind==='json') {
+        const blob = new Blob([JSON.stringify(rows, null, 2)], {type:'application/json'});
+        const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='validation_labels.json'; a.click();
+      } else {
+        const headers = Object.keys(rows[0]||{order:'',key:'',user:'',thread_id:'',group:'',region:'',dateYMD:'',label:'',irrelevant_reason:'',notes:'',flagged:0,labeled_at:''});
+        const lines = [headers.join(',')].concat(rows.map(r => headers.map(h => JSON.stringify(r[h]??'')).join(',')));
+        const blob = new Blob([lines.join('\n')], {type:'text/csv;charset=utf-8;'});
+        const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='validation_labels.csv'; a.click();
+      }
+    }
+
+    async function exportFlaggedExcel(){
+      // Collect flagged threads and include user prompts concatenated for reviewer context
+      const flaggedKeys = STATE.sampleKeys.filter(k => (STATE.labels[k]||{}).flagged);
+      if (!flaggedKeys.length) { alert('No flagged threads to export.'); return; }
+      const rows = flaggedKeys.map((k,i)=>{
+        const t = STATE.threads.find(x=>x.key===k)||{};
+        const lab = STATE.labels[k] || {};
+        const prompts = (t.msgs||[]).map(m=> (m.prompt||'')).filter(Boolean).join('\n---\n');
+        return {
+          order: i+1,
+          key: k,
+          user: t.user,
+          thread_id: t.thread_id,
+          group: t.group,
+          region: t.region,
+          dateYMD: t.dateYMD,
+          label: lab.label || '',
+          irrelevant_reason: lab.reason || '',
+          notes: lab.notes || '',
+          user_prompts: prompts
+        };
+      });
+      await ensureXlsx();
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.json_to_sheet(rows);
+      XLSX.utils.book_append_sheet(wb, ws, 'flagged');
+      XLSX.writeFile(wb, 'flagged_threads.xlsx');
+    }
+
+    // Wire up UI
+    async function loadDefaultSample(){
+      try {
+        const res = await fetch('demo_data/demo_threads.json');
+        if (!res.ok) throw new Error('not found');
+        const data = await res.json();
+        await loadSampleData(data);
+        document.getElementById('status').textContent = 'Loaded demo sample.';
+      } catch (e) {
+        alert('Could not load demo_threads.json. Use "Load Selected File" to pick your sample.');
+      }
+    }
+    async function loadLabelsForGroup(kind){
+      // Demo: skip GPT label lookup
+      return [];
+    }
+
+    function buildGptLabelMap(labelRows, kind){
+      const map = new Map();
+      for (const r of labelRows){
+        const u = r.FakeEmail; const t = r.thread_id;
+        if (!u || !t) continue;
+        const key = `${kind}|${u}|${t}`;
+        if (!map.has(key)){
+          const label = String(r.label||'').toLowerCase();
+          if (label==='relevant' || label==='irrelevant') map.set(key, label);
+        }
+      }
+      return map;
+    }
+
+    async function loadSampleData(data){
+      const sample = Array.isArray(data) ? data : (data.sample || []);
+      STATE.threads = sample;
+      STATE.sampleKeys = sample.map(t=>t.key);
+      STATE.idx = 0;
+
+      // Demo: no GPT labels loaded
+      STATE.gptLabelMap = new Map();
+
+      updateKpi();
+      renderCurrent();
+    }
+    document.getElementById('loadDefault').onclick = loadDefaultSample;
+    // Window sample button removed in demo
+    document.getElementById('loadSampleFile').onclick = async ()=>{
+      const f = document.getElementById('sampleFile').files[0];
+      if (!f) { alert('Choose a sample JSON first.'); return; }
+      try { const data = JSON.parse(await f.text()); await loadSampleData(data); document.getElementById('status').textContent='Loaded selected sample.'; }
+      catch(e){ alert('Failed to parse sample JSON: '+e); }
+    };
+    document.getElementById('saveNext').onclick = ()=> saveLabelAndMaybeNext(true);
+    document.getElementById('skip').onclick = ()=> next();
+    document.getElementById('prev').onclick = ()=> prev();
+    document.getElementById('exportLabelsCsv').onclick = ()=> exportLabels('csv');
+    document.getElementById('exportLabelsJson').onclick = ()=> exportLabels('json');
+    document.getElementById('exportFlaggedXlsx').onclick = ()=> exportFlaggedExcel();
+    document.getElementById('resetSession').onclick = ()=> { if (confirm('Reset session? This clears saved progress for this tool.')) { resetSession(); document.getElementById('status').textContent='Session reset.'; renderCurrent(); updateKpi(); } };
+    document.getElementById('resume').onclick = ()=>{
+      const s = loadSession();
+      if (!s) { alert('No saved session found.'); return; }
+      STATE.sampleKeys = s.sampleKeys || []; STATE.labels = s.labels || {}; STATE.idx = s.idx || 0; STATE.regionColumn = s.regionColumn || null; updateKpi(); renderCurrent(); document.getElementById('status').textContent='Resumed saved session.';
+    };
+    document.getElementById('labRel').onchange = ()=> { document.getElementById('irrBox').style.display = 'none'; const key=STATE.sampleKeys[STATE.idx]; const t=STATE.threads.find(x=>x.key===key); renderContextChart(t); };
+    document.getElementById('labIrr').onchange = ()=> {
+      document.getElementById('irrBox').style.display = 'block';
+      // default the reason to 'other' when selecting Irrelevant if not already chosen
+      const sel = document.getElementById('irrReason');
+      if (!sel.value) sel.value = 'other';
+      const key=STATE.sampleKeys[STATE.idx];
+      const t=STATE.threads.find(x=>x.key===key);
+      renderContextChart(t);
+    };
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e)=>{
+      if (e.key==='r' || e.key==='R') { document.getElementById('labRel').checked = true; document.getElementById('irrBox').style.display='none'; }
+      if (e.key==='i' || e.key==='I') { document.getElementById('labIrr').checked = true; document.getElementById('irrBox').style.display='block'; }
+      if (e.key==='n' || e.key==='N') { saveLabelAndMaybeNext(true); }
+      if (e.key==='p' || e.key==='P') { prev(); }
+      if (e.key==='f' || e.key==='F') { const el=document.getElementById('flag'); el.checked=!el.checked; }
+    });
+  </script>
+</body>
+</html>

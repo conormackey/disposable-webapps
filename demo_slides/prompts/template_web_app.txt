@@ -1,0 +1,28 @@
+You are building a single-use web app to explore **my** data. Keep everything local (no external services).
+
+Project brief (fill in):
+- Goal / decision: <what I’m trying to learn or decide>
+- Audience: <who will use it>
+- Constraints: <offline/online, libraries allowed, file size limits, styling prefs>
+
+Data briefing (fill in):
+- File(s) + formats: <paths, csv/json/xlsx>
+- Each row represents: <e.g., one message, one thread>
+- Columns (name:type:meaning): <col1:type:meaning>, <col2:type:meaning>, ...
+- Sample rows (2–5): <paste tiny samples>
+- Sensitive fields (do NOT show or store): <list or “none”>
+
+Must build:
+- Views: <charts/tables/filters you already know you want>
+- Interactions: <e.g., filter by date/region, click thread to open detail>
+- UX: chat-style bubbles for prompt/response; user right, AI left. Keep controls on the side.
+- Outputs: single HTML (no build step), inlined CSS/JS, plus synthetic fallback data when real files are missing.
+
+Research questions to answer:
+- <Q1>
+- <Q2>
+- Optional: “Surprise me with one extra view that helps answer these.”
+
+Deliverables:
+- HTML file (self-contained)
+- Short run instructions (e.g., `python -m http.server 8000`)

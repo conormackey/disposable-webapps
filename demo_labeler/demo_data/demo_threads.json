@@ -1,0 +1,1002 @@
+{
+  "sample": [
+    {
+      "key": "T2|demo_t2_01@example.com|thread_1",
+      "user": "demo_t2_01@example.com",
+      "thread_id": "thread_1",
+      "group": "T2",
+      "region": "North America",
+      "dateYMD": "2025-05-12",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t2_01@example.com] Ask about pricing scenario 1",
+          "response": "AI reply with marketing idea 1",
+          "date": "2025-05-12",
+          "time": "19:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t2_01@example.com] Ask about innovation scenario 2",
+          "response": "AI reply with innovation idea 2",
+          "date": "2025-05-12",
+          "time": "19:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t2_01@example.com] Ask about pricing scenario 3",
+          "response": "AI reply with usability idea 3",
+          "date": "2025-05-12",
+          "time": "20:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t2_01@example.com] Ask about usability scenario 4",
+          "response": "AI reply with marketing idea 4",
+          "date": "2025-05-12",
+          "time": "20:21"
+        }
+      ]
+    },
+    {
+      "key": "T2|demo_t2_01@example.com|thread_2",
+      "user": "demo_t2_01@example.com",
+      "thread_id": "thread_2",
+      "group": "T2",
+      "region": "Europe",
+      "dateYMD": "2025-05-16",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t2_01@example.com] Ask about packaging scenario 1",
+          "response": "AI reply with marketing idea 1",
+          "date": "2025-05-16",
+          "time": "09:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t2_01@example.com] Ask about usability scenario 2",
+          "response": "AI reply with marketing idea 2",
+          "date": "2025-05-16",
+          "time": "09:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t2_01@example.com] Ask about sustainability scenario 3",
+          "response": "AI reply with packaging idea 3",
+          "date": "2025-05-16",
+          "time": "10:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t2_01@example.com] Ask about packaging scenario 4",
+          "response": "AI reply with innovation idea 4",
+          "date": "2025-05-16",
+          "time": "10:21"
+        }
+      ]
+    },
+    {
+      "key": "T2|demo_t2_02@example.com|thread_1",
+      "user": "demo_t2_02@example.com",
+      "thread_id": "thread_1",
+      "group": "T2",
+      "region": "Europe",
+      "dateYMD": "2025-05-16",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t2_02@example.com] Ask about pricing scenario 1",
+          "response": "AI reply with innovation idea 1",
+          "date": "2025-05-16",
+          "time": "16:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t2_02@example.com] Ask about innovation scenario 2",
+          "response": "AI reply with marketing idea 2",
+          "date": "2025-05-16",
+          "time": "16:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t2_02@example.com] Ask about sustainability scenario 3",
+          "response": "AI reply with pricing idea 3",
+          "date": "2025-05-16",
+          "time": "17:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t2_02@example.com] Ask about innovation scenario 4",
+          "response": "AI reply with innovation idea 4",
+          "date": "2025-05-16",
+          "time": "17:21"
+        }
+      ]
+    },
+    {
+      "key": "T2|demo_t2_02@example.com|thread_2",
+      "user": "demo_t2_02@example.com",
+      "thread_id": "thread_2",
+      "group": "T2",
+      "region": "North America",
+      "dateYMD": "2025-05-15",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t2_02@example.com] Ask about innovation scenario 1",
+          "response": "AI reply with marketing idea 1",
+          "date": "2025-05-15",
+          "time": "09:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t2_02@example.com] Ask about pricing scenario 2",
+          "response": "AI reply with usability idea 2",
+          "date": "2025-05-15",
+          "time": "09:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t2_02@example.com] Ask about pricing scenario 3",
+          "response": "AI reply with marketing idea 3",
+          "date": "2025-05-15",
+          "time": "10:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t2_02@example.com] Ask about pricing scenario 4",
+          "response": "AI reply with innovation idea 4",
+          "date": "2025-05-15",
+          "time": "10:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t2_02@example.com] Ask about marketing scenario 5",
+          "response": "AI reply with marketing idea 5",
+          "date": "2025-05-15",
+          "time": "11:28"
+        }
+      ]
+    },
+    {
+      "key": "T2|demo_t2_03@example.com|thread_1",
+      "user": "demo_t2_03@example.com",
+      "thread_id": "thread_1",
+      "group": "T2",
+      "region": "APAC",
+      "dateYMD": "2025-05-16",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t2_03@example.com] Ask about usability scenario 1",
+          "response": "AI reply with sustainability idea 1",
+          "date": "2025-05-16",
+          "time": "10:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t2_03@example.com] Ask about usability scenario 2",
+          "response": "AI reply with usability idea 2",
+          "date": "2025-05-16",
+          "time": "10:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t2_03@example.com] Ask about marketing scenario 3",
+          "response": "AI reply with innovation idea 3",
+          "date": "2025-05-16",
+          "time": "11:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t2_03@example.com] Ask about pricing scenario 4",
+          "response": "AI reply with sustainability idea 4",
+          "date": "2025-05-16",
+          "time": "11:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t2_03@example.com] Ask about usability scenario 5",
+          "response": "AI reply with pricing idea 5",
+          "date": "2025-05-16",
+          "time": "12:28"
+        },
+        {
+          "id": "msg_6",
+          "prompt": "[demo_t2_03@example.com] Ask about sustainability scenario 6",
+          "response": "AI reply with usability idea 6",
+          "date": "2025-05-16",
+          "time": "12:35"
+        },
+        {
+          "id": "msg_7",
+          "prompt": "[demo_t2_03@example.com] Ask about sustainability scenario 7",
+          "response": "AI reply with sustainability idea 7",
+          "date": "2025-05-16",
+          "time": "13:42"
+        }
+      ]
+    },
+    {
+      "key": "T2|demo_t2_03@example.com|thread_2",
+      "user": "demo_t2_03@example.com",
+      "thread_id": "thread_2",
+      "group": "T2",
+      "region": "APAC",
+      "dateYMD": "2025-05-16",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t2_03@example.com] Ask about sustainability scenario 1",
+          "response": "AI reply with pricing idea 1",
+          "date": "2025-05-16",
+          "time": "15:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t2_03@example.com] Ask about marketing scenario 2",
+          "response": "AI reply with usability idea 2",
+          "date": "2025-05-16",
+          "time": "15:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t2_03@example.com] Ask about innovation scenario 3",
+          "response": "AI reply with sustainability idea 3",
+          "date": "2025-05-16",
+          "time": "16:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t2_03@example.com] Ask about packaging scenario 4",
+          "response": "AI reply with sustainability idea 4",
+          "date": "2025-05-16",
+          "time": "16:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t2_03@example.com] Ask about innovation scenario 5",
+          "response": "AI reply with pricing idea 5",
+          "date": "2025-05-16",
+          "time": "17:28"
+        },
+        {
+          "id": "msg_6",
+          "prompt": "[demo_t2_03@example.com] Ask about sustainability scenario 6",
+          "response": "AI reply with marketing idea 6",
+          "date": "2025-05-16",
+          "time": "17:35"
+        },
+        {
+          "id": "msg_7",
+          "prompt": "[demo_t2_03@example.com] Ask about packaging scenario 7",
+          "response": "AI reply with marketing idea 7",
+          "date": "2025-05-16",
+          "time": "18:42"
+        }
+      ]
+    },
+    {
+      "key": "T2|demo_t2_04@example.com|thread_1",
+      "user": "demo_t2_04@example.com",
+      "thread_id": "thread_1",
+      "group": "T2",
+      "region": "Europe",
+      "dateYMD": "2025-05-14",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t2_04@example.com] Ask about sustainability scenario 1",
+          "response": "AI reply with pricing idea 1",
+          "date": "2025-05-14",
+          "time": "08:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t2_04@example.com] Ask about pricing scenario 2",
+          "response": "AI reply with usability idea 2",
+          "date": "2025-05-14",
+          "time": "08:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t2_04@example.com] Ask about marketing scenario 3",
+          "response": "AI reply with innovation idea 3",
+          "date": "2025-05-14",
+          "time": "09:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t2_04@example.com] Ask about packaging scenario 4",
+          "response": "AI reply with usability idea 4",
+          "date": "2025-05-14",
+          "time": "09:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t2_04@example.com] Ask about innovation scenario 5",
+          "response": "AI reply with sustainability idea 5",
+          "date": "2025-05-14",
+          "time": "10:28"
+        },
+        {
+          "id": "msg_6",
+          "prompt": "[demo_t2_04@example.com] Ask about marketing scenario 6",
+          "response": "AI reply with innovation idea 6",
+          "date": "2025-05-14",
+          "time": "10:35"
+        },
+        {
+          "id": "msg_7",
+          "prompt": "[demo_t2_04@example.com] Ask about marketing scenario 7",
+          "response": "AI reply with packaging idea 7",
+          "date": "2025-05-14",
+          "time": "11:42"
+        }
+      ]
+    },
+    {
+      "key": "T2|demo_t2_04@example.com|thread_2",
+      "user": "demo_t2_04@example.com",
+      "thread_id": "thread_2",
+      "group": "T2",
+      "region": "Europe",
+      "dateYMD": "2025-05-14",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t2_04@example.com] Ask about innovation scenario 1",
+          "response": "AI reply with sustainability idea 1",
+          "date": "2025-05-14",
+          "time": "18:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t2_04@example.com] Ask about marketing scenario 2",
+          "response": "AI reply with pricing idea 2",
+          "date": "2025-05-14",
+          "time": "18:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t2_04@example.com] Ask about sustainability scenario 3",
+          "response": "AI reply with sustainability idea 3",
+          "date": "2025-05-14",
+          "time": "19:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t2_04@example.com] Ask about packaging scenario 4",
+          "response": "AI reply with usability idea 4",
+          "date": "2025-05-14",
+          "time": "19:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t2_04@example.com] Ask about pricing scenario 5",
+          "response": "AI reply with packaging idea 5",
+          "date": "2025-05-14",
+          "time": "20:28"
+        },
+        {
+          "id": "msg_6",
+          "prompt": "[demo_t2_04@example.com] Ask about packaging scenario 6",
+          "response": "AI reply with usability idea 6",
+          "date": "2025-05-14",
+          "time": "20:35"
+        },
+        {
+          "id": "msg_7",
+          "prompt": "[demo_t2_04@example.com] Ask about pricing scenario 7",
+          "response": "AI reply with pricing idea 7",
+          "date": "2025-05-14",
+          "time": "21:42"
+        },
+        {
+          "id": "msg_8",
+          "prompt": "[demo_t2_04@example.com] Ask about pricing scenario 8",
+          "response": "AI reply with innovation idea 8",
+          "date": "2025-05-14",
+          "time": "21:49"
+        }
+      ]
+    },
+    {
+      "key": "T2|demo_t2_05@example.com|thread_1",
+      "user": "demo_t2_05@example.com",
+      "thread_id": "thread_1",
+      "group": "T2",
+      "region": "North America",
+      "dateYMD": "2025-05-11",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t2_05@example.com] Ask about innovation scenario 1",
+          "response": "AI reply with marketing idea 1",
+          "date": "2025-05-11",
+          "time": "10:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t2_05@example.com] Ask about marketing scenario 2",
+          "response": "AI reply with sustainability idea 2",
+          "date": "2025-05-11",
+          "time": "10:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t2_05@example.com] Ask about marketing scenario 3",
+          "response": "AI reply with pricing idea 3",
+          "date": "2025-05-11",
+          "time": "11:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t2_05@example.com] Ask about sustainability scenario 4",
+          "response": "AI reply with pricing idea 4",
+          "date": "2025-05-11",
+          "time": "11:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t2_05@example.com] Ask about innovation scenario 5",
+          "response": "AI reply with innovation idea 5",
+          "date": "2025-05-11",
+          "time": "12:28"
+        },
+        {
+          "id": "msg_6",
+          "prompt": "[demo_t2_05@example.com] Ask about usability scenario 6",
+          "response": "AI reply with innovation idea 6",
+          "date": "2025-05-11",
+          "time": "12:35"
+        },
+        {
+          "id": "msg_7",
+          "prompt": "[demo_t2_05@example.com] Ask about usability scenario 7",
+          "response": "AI reply with marketing idea 7",
+          "date": "2025-05-11",
+          "time": "13:42"
+        }
+      ]
+    },
+    {
+      "key": "T2|demo_t2_05@example.com|thread_2",
+      "user": "demo_t2_05@example.com",
+      "thread_id": "thread_2",
+      "group": "T2",
+      "region": "APAC",
+      "dateYMD": "2025-05-10",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t2_05@example.com] Ask about innovation scenario 1",
+          "response": "AI reply with usability idea 1",
+          "date": "2025-05-10",
+          "time": "13:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t2_05@example.com] Ask about pricing scenario 2",
+          "response": "AI reply with innovation idea 2",
+          "date": "2025-05-10",
+          "time": "13:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t2_05@example.com] Ask about usability scenario 3",
+          "response": "AI reply with sustainability idea 3",
+          "date": "2025-05-10",
+          "time": "14:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t2_05@example.com] Ask about sustainability scenario 4",
+          "response": "AI reply with pricing idea 4",
+          "date": "2025-05-10",
+          "time": "14:21"
+        }
+      ]
+    },
+    {
+      "key": "T3|demo_t3_01@example.com|thread_1",
+      "user": "demo_t3_01@example.com",
+      "thread_id": "thread_1",
+      "group": "T3",
+      "region": "North America",
+      "dateYMD": "2025-05-12",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t3_01@example.com] Ask about innovation scenario 1",
+          "response": "AI reply with usability idea 1",
+          "date": "2025-05-12",
+          "time": "14:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t3_01@example.com] Ask about marketing scenario 2",
+          "response": "AI reply with pricing idea 2",
+          "date": "2025-05-12",
+          "time": "14:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t3_01@example.com] Ask about marketing scenario 3",
+          "response": "AI reply with innovation idea 3",
+          "date": "2025-05-12",
+          "time": "15:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t3_01@example.com] Ask about sustainability scenario 4",
+          "response": "AI reply with sustainability idea 4",
+          "date": "2025-05-12",
+          "time": "15:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t3_01@example.com] Ask about packaging scenario 5",
+          "response": "AI reply with pricing idea 5",
+          "date": "2025-05-12",
+          "time": "16:28"
+        },
+        {
+          "id": "msg_6",
+          "prompt": "[demo_t3_01@example.com] Ask about innovation scenario 6",
+          "response": "AI reply with sustainability idea 6",
+          "date": "2025-05-12",
+          "time": "16:35"
+        }
+      ]
+    },
+    {
+      "key": "T3|demo_t3_01@example.com|thread_2",
+      "user": "demo_t3_01@example.com",
+      "thread_id": "thread_2",
+      "group": "T3",
+      "region": "APAC",
+      "dateYMD": "2025-05-11",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t3_01@example.com] Ask about packaging scenario 1",
+          "response": "AI reply with sustainability idea 1",
+          "date": "2025-05-11",
+          "time": "17:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t3_01@example.com] Ask about innovation scenario 2",
+          "response": "AI reply with sustainability idea 2",
+          "date": "2025-05-11",
+          "time": "17:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t3_01@example.com] Ask about innovation scenario 3",
+          "response": "AI reply with usability idea 3",
+          "date": "2025-05-11",
+          "time": "18:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t3_01@example.com] Ask about pricing scenario 4",
+          "response": "AI reply with usability idea 4",
+          "date": "2025-05-11",
+          "time": "18:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t3_01@example.com] Ask about marketing scenario 5",
+          "response": "AI reply with packaging idea 5",
+          "date": "2025-05-11",
+          "time": "19:28"
+        },
+        {
+          "id": "msg_6",
+          "prompt": "[demo_t3_01@example.com] Ask about sustainability scenario 6",
+          "response": "AI reply with marketing idea 6",
+          "date": "2025-05-11",
+          "time": "19:35"
+        }
+      ]
+    },
+    {
+      "key": "T3|demo_t3_02@example.com|thread_1",
+      "user": "demo_t3_02@example.com",
+      "thread_id": "thread_1",
+      "group": "T3",
+      "region": "Europe",
+      "dateYMD": "2025-05-12",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t3_02@example.com] Ask about marketing scenario 1",
+          "response": "AI reply with usability idea 1",
+          "date": "2025-05-12",
+          "time": "15:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t3_02@example.com] Ask about innovation scenario 2",
+          "response": "AI reply with sustainability idea 2",
+          "date": "2025-05-12",
+          "time": "15:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t3_02@example.com] Ask about packaging scenario 3",
+          "response": "AI reply with usability idea 3",
+          "date": "2025-05-12",
+          "time": "16:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t3_02@example.com] Ask about pricing scenario 4",
+          "response": "AI reply with pricing idea 4",
+          "date": "2025-05-12",
+          "time": "16:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t3_02@example.com] Ask about innovation scenario 5",
+          "response": "AI reply with sustainability idea 5",
+          "date": "2025-05-12",
+          "time": "17:28"
+        }
+      ]
+    },
+    {
+      "key": "T3|demo_t3_02@example.com|thread_2",
+      "user": "demo_t3_02@example.com",
+      "thread_id": "thread_2",
+      "group": "T3",
+      "region": "North America",
+      "dateYMD": "2025-05-13",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t3_02@example.com] Ask about pricing scenario 1",
+          "response": "AI reply with sustainability idea 1",
+          "date": "2025-05-13",
+          "time": "12:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t3_02@example.com] Ask about sustainability scenario 2",
+          "response": "AI reply with sustainability idea 2",
+          "date": "2025-05-13",
+          "time": "12:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t3_02@example.com] Ask about sustainability scenario 3",
+          "response": "AI reply with sustainability idea 3",
+          "date": "2025-05-13",
+          "time": "13:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t3_02@example.com] Ask about pricing scenario 4",
+          "response": "AI reply with marketing idea 4",
+          "date": "2025-05-13",
+          "time": "13:21"
+        }
+      ]
+    },
+    {
+      "key": "T3|demo_t3_03@example.com|thread_1",
+      "user": "demo_t3_03@example.com",
+      "thread_id": "thread_1",
+      "group": "T3",
+      "region": "Europe",
+      "dateYMD": "2025-05-16",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t3_03@example.com] Ask about usability scenario 1",
+          "response": "AI reply with marketing idea 1",
+          "date": "2025-05-16",
+          "time": "09:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t3_03@example.com] Ask about usability scenario 2",
+          "response": "AI reply with usability idea 2",
+          "date": "2025-05-16",
+          "time": "09:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t3_03@example.com] Ask about usability scenario 3",
+          "response": "AI reply with packaging idea 3",
+          "date": "2025-05-16",
+          "time": "10:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t3_03@example.com] Ask about marketing scenario 4",
+          "response": "AI reply with usability idea 4",
+          "date": "2025-05-16",
+          "time": "10:21"
+        }
+      ]
+    },
+    {
+      "key": "T3|demo_t3_03@example.com|thread_2",
+      "user": "demo_t3_03@example.com",
+      "thread_id": "thread_2",
+      "group": "T3",
+      "region": "North America",
+      "dateYMD": "2025-05-14",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t3_03@example.com] Ask about usability scenario 1",
+          "response": "AI reply with marketing idea 1",
+          "date": "2025-05-14",
+          "time": "10:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t3_03@example.com] Ask about innovation scenario 2",
+          "response": "AI reply with marketing idea 2",
+          "date": "2025-05-14",
+          "time": "10:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t3_03@example.com] Ask about usability scenario 3",
+          "response": "AI reply with packaging idea 3",
+          "date": "2025-05-14",
+          "time": "11:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t3_03@example.com] Ask about packaging scenario 4",
+          "response": "AI reply with marketing idea 4",
+          "date": "2025-05-14",
+          "time": "11:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t3_03@example.com] Ask about marketing scenario 5",
+          "response": "AI reply with pricing idea 5",
+          "date": "2025-05-14",
+          "time": "12:28"
+        },
+        {
+          "id": "msg_6",
+          "prompt": "[demo_t3_03@example.com] Ask about innovation scenario 6",
+          "response": "AI reply with usability idea 6",
+          "date": "2025-05-14",
+          "time": "12:35"
+        }
+      ]
+    },
+    {
+      "key": "T3|demo_t3_04@example.com|thread_1",
+      "user": "demo_t3_04@example.com",
+      "thread_id": "thread_1",
+      "group": "T3",
+      "region": "North America",
+      "dateYMD": "2025-05-11",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t3_04@example.com] Ask about innovation scenario 1",
+          "response": "AI reply with packaging idea 1",
+          "date": "2025-05-11",
+          "time": "10:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t3_04@example.com] Ask about marketing scenario 2",
+          "response": "AI reply with usability idea 2",
+          "date": "2025-05-11",
+          "time": "10:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t3_04@example.com] Ask about packaging scenario 3",
+          "response": "AI reply with innovation idea 3",
+          "date": "2025-05-11",
+          "time": "11:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t3_04@example.com] Ask about usability scenario 4",
+          "response": "AI reply with marketing idea 4",
+          "date": "2025-05-11",
+          "time": "11:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t3_04@example.com] Ask about innovation scenario 5",
+          "response": "AI reply with marketing idea 5",
+          "date": "2025-05-11",
+          "time": "12:28"
+        },
+        {
+          "id": "msg_6",
+          "prompt": "[demo_t3_04@example.com] Ask about usability scenario 6",
+          "response": "AI reply with usability idea 6",
+          "date": "2025-05-11",
+          "time": "12:35"
+        },
+        {
+          "id": "msg_7",
+          "prompt": "[demo_t3_04@example.com] Ask about packaging scenario 7",
+          "response": "AI reply with usability idea 7",
+          "date": "2025-05-11",
+          "time": "13:42"
+        },
+        {
+          "id": "msg_8",
+          "prompt": "[demo_t3_04@example.com] Ask about packaging scenario 8",
+          "response": "AI reply with pricing idea 8",
+          "date": "2025-05-11",
+          "time": "13:49"
+        }
+      ]
+    },
+    {
+      "key": "T3|demo_t3_04@example.com|thread_2",
+      "user": "demo_t3_04@example.com",
+      "thread_id": "thread_2",
+      "group": "T3",
+      "region": "Europe",
+      "dateYMD": "2025-05-15",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t3_04@example.com] Ask about innovation scenario 1",
+          "response": "AI reply with marketing idea 1",
+          "date": "2025-05-15",
+          "time": "19:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t3_04@example.com] Ask about sustainability scenario 2",
+          "response": "AI reply with usability idea 2",
+          "date": "2025-05-15",
+          "time": "19:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t3_04@example.com] Ask about pricing scenario 3",
+          "response": "AI reply with marketing idea 3",
+          "date": "2025-05-15",
+          "time": "20:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t3_04@example.com] Ask about pricing scenario 4",
+          "response": "AI reply with packaging idea 4",
+          "date": "2025-05-15",
+          "time": "20:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t3_04@example.com] Ask about usability scenario 5",
+          "response": "AI reply with packaging idea 5",
+          "date": "2025-05-15",
+          "time": "21:28"
+        },
+        {
+          "id": "msg_6",
+          "prompt": "[demo_t3_04@example.com] Ask about usability scenario 6",
+          "response": "AI reply with sustainability idea 6",
+          "date": "2025-05-15",
+          "time": "21:35"
+        },
+        {
+          "id": "msg_7",
+          "prompt": "[demo_t3_04@example.com] Ask about innovation scenario 7",
+          "response": "AI reply with usability idea 7",
+          "date": "2025-05-15",
+          "time": "22:42"
+        }
+      ]
+    },
+    {
+      "key": "T3|demo_t3_05@example.com|thread_1",
+      "user": "demo_t3_05@example.com",
+      "thread_id": "thread_1",
+      "group": "T3",
+      "region": "APAC",
+      "dateYMD": "2025-05-13",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t3_05@example.com] Ask about usability scenario 1",
+          "response": "AI reply with innovation idea 1",
+          "date": "2025-05-13",
+          "time": "18:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t3_05@example.com] Ask about sustainability scenario 2",
+          "response": "AI reply with innovation idea 2",
+          "date": "2025-05-13",
+          "time": "18:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t3_05@example.com] Ask about marketing scenario 3",
+          "response": "AI reply with pricing idea 3",
+          "date": "2025-05-13",
+          "time": "19:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t3_05@example.com] Ask about marketing scenario 4",
+          "response": "AI reply with sustainability idea 4",
+          "date": "2025-05-13",
+          "time": "19:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t3_05@example.com] Ask about pricing scenario 5",
+          "response": "AI reply with marketing idea 5",
+          "date": "2025-05-13",
+          "time": "20:28"
+        },
+        {
+          "id": "msg_6",
+          "prompt": "[demo_t3_05@example.com] Ask about marketing scenario 6",
+          "response": "AI reply with packaging idea 6",
+          "date": "2025-05-13",
+          "time": "20:35"
+        }
+      ]
+    },
+    {
+      "key": "T3|demo_t3_05@example.com|thread_2",
+      "user": "demo_t3_05@example.com",
+      "thread_id": "thread_2",
+      "group": "T3",
+      "region": "Europe",
+      "dateYMD": "2025-05-12",
+      "msgs": [
+        {
+          "id": "msg_1",
+          "prompt": "[demo_t3_05@example.com] Ask about packaging scenario 1",
+          "response": "AI reply with pricing idea 1",
+          "date": "2025-05-12",
+          "time": "20:00"
+        },
+        {
+          "id": "msg_2",
+          "prompt": "[demo_t3_05@example.com] Ask about innovation scenario 2",
+          "response": "AI reply with pricing idea 2",
+          "date": "2025-05-12",
+          "time": "20:07"
+        },
+        {
+          "id": "msg_3",
+          "prompt": "[demo_t3_05@example.com] Ask about pricing scenario 3",
+          "response": "AI reply with usability idea 3",
+          "date": "2025-05-12",
+          "time": "21:14"
+        },
+        {
+          "id": "msg_4",
+          "prompt": "[demo_t3_05@example.com] Ask about marketing scenario 4",
+          "response": "AI reply with packaging idea 4",
+          "date": "2025-05-12",
+          "time": "21:21"
+        },
+        {
+          "id": "msg_5",
+          "prompt": "[demo_t3_05@example.com] Ask about usability scenario 5",
+          "response": "AI reply with pricing idea 5",
+          "date": "2025-05-12",
+          "time": "22:28"
+        }
+      ]
+    }
+  ]
+}

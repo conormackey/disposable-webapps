@@ -1,0 +1,1242 @@
+[
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_1",
+    "prompt": "User question about packaging scenario 1",
+    "response": "AI reply on claims with suggestion 1",
+    "Date": "2025-05-01",
+    "Time of Day": "15:15",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_2",
+    "prompt": "User question about packaging scenario 2",
+    "response": "AI reply on regulatory with suggestion 2",
+    "Date": "2025-05-01",
+    "Time of Day": "15:18",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_3",
+    "prompt": "User question about launch plan scenario 3",
+    "response": "AI reply on sustainability with suggestion 3",
+    "Date": "2025-05-01",
+    "Time of Day": "16:21",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_4",
+    "prompt": "User question about sustainability scenario 4",
+    "response": "AI reply on packaging with suggestion 4",
+    "Date": "2025-05-01",
+    "Time of Day": "16:24",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_5",
+    "prompt": "User question about usability scenario 5",
+    "response": "AI reply on usability with suggestion 5",
+    "Date": "2025-05-01",
+    "Time of Day": "17:27",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_6",
+    "prompt": "User question about claims scenario 6",
+    "response": "AI reply on regulatory with suggestion 6",
+    "Date": "2025-05-01",
+    "Time of Day": "17:30",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_7",
+    "prompt": "User question about sustainability scenario 7",
+    "response": "AI reply on claims with suggestion 7",
+    "Date": "2025-05-01",
+    "Time of Day": "18:33",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_8",
+    "prompt": "User question about usability scenario 8",
+    "response": "AI reply on claims with suggestion 8",
+    "Date": "2025-05-01",
+    "Time of Day": "18:36",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_9",
+    "prompt": "User question about launch plan scenario 9",
+    "response": "AI reply on usability with suggestion 9",
+    "Date": "2025-05-01",
+    "Time of Day": "19:39",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_10",
+    "prompt": "User question about testing scenario 10",
+    "response": "AI reply on regulatory with suggestion 10",
+    "Date": "2025-05-01",
+    "Time of Day": "19:42",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_11",
+    "prompt": "User question about pricing scenario 11",
+    "response": "AI reply on sustainability with suggestion 11",
+    "Date": "2025-05-01",
+    "Time of Day": "20:45",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_12",
+    "prompt": "User question about positioning scenario 1",
+    "response": "AI reply on packaging with suggestion 1",
+    "Date": "2025-05-14",
+    "Time of Day": "17:20",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_13",
+    "prompt": "User question about packaging scenario 2",
+    "response": "AI reply on launch plan with suggestion 2",
+    "Date": "2025-05-14",
+    "Time of Day": "17:23",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_14",
+    "prompt": "User question about packaging scenario 3",
+    "response": "AI reply on positioning with suggestion 3",
+    "Date": "2025-05-14",
+    "Time of Day": "18:26",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_15",
+    "prompt": "User question about positioning scenario 4",
+    "response": "AI reply on regulatory with suggestion 4",
+    "Date": "2025-05-14",
+    "Time of Day": "18:29",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_16",
+    "prompt": "User question about pricing scenario 5",
+    "response": "AI reply on sustainability with suggestion 5",
+    "Date": "2025-05-14",
+    "Time of Day": "19:32",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_17",
+    "prompt": "User question about testing scenario 6",
+    "response": "AI reply on claims with suggestion 6",
+    "Date": "2025-05-14",
+    "Time of Day": "19:35",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_18",
+    "prompt": "User question about packaging scenario 7",
+    "response": "AI reply on launch plan with suggestion 7",
+    "Date": "2025-05-14",
+    "Time of Day": "20:38",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_19",
+    "prompt": "User question about packaging scenario 8",
+    "response": "AI reply on claims with suggestion 8",
+    "Date": "2025-05-14",
+    "Time of Day": "20:41",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_20",
+    "prompt": "User question about pricing scenario 9",
+    "response": "AI reply on regulatory with suggestion 9",
+    "Date": "2025-05-14",
+    "Time of Day": "21:44",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_21",
+    "prompt": "User question about positioning scenario 10",
+    "response": "AI reply on regulatory with suggestion 10",
+    "Date": "2025-05-14",
+    "Time of Day": "21:47",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_22",
+    "prompt": "User question about usability scenario 11",
+    "response": "AI reply on packaging with suggestion 11",
+    "Date": "2025-05-14",
+    "Time of Day": "22:50",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_23",
+    "prompt": "User question about sustainability scenario 12",
+    "response": "AI reply on usability with suggestion 12",
+    "Date": "2025-05-14",
+    "Time of Day": "22:53",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_24",
+    "prompt": "User question about positioning scenario 1",
+    "response": "AI reply on fragrance with suggestion 1",
+    "Date": "2025-05-03",
+    "Time of Day": "14:05",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_25",
+    "prompt": "User question about positioning scenario 2",
+    "response": "AI reply on positioning with suggestion 2",
+    "Date": "2025-05-03",
+    "Time of Day": "14:08",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_26",
+    "prompt": "User question about usability scenario 3",
+    "response": "AI reply on pricing with suggestion 3",
+    "Date": "2025-05-03",
+    "Time of Day": "15:11",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_27",
+    "prompt": "User question about packaging scenario 4",
+    "response": "AI reply on regulatory with suggestion 4",
+    "Date": "2025-05-03",
+    "Time of Day": "15:14",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_28",
+    "prompt": "User question about fragrance scenario 5",
+    "response": "AI reply on claims with suggestion 5",
+    "Date": "2025-05-03",
+    "Time of Day": "16:17",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_29",
+    "prompt": "User question about usability scenario 6",
+    "response": "AI reply on fragrance with suggestion 6",
+    "Date": "2025-05-03",
+    "Time of Day": "16:20",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_30",
+    "prompt": "User question about testing scenario 7",
+    "response": "AI reply on launch plan with suggestion 7",
+    "Date": "2025-05-03",
+    "Time of Day": "17:23",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_31",
+    "prompt": "User question about pricing scenario 8",
+    "response": "AI reply on claims with suggestion 8",
+    "Date": "2025-05-03",
+    "Time of Day": "17:26",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user01@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_32",
+    "prompt": "User question about usability scenario 9",
+    "response": "AI reply on positioning with suggestion 9",
+    "Date": "2025-05-03",
+    "Time of Day": "18:29",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user02@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_33",
+    "prompt": "User question about regulatory scenario 1",
+    "response": "AI reply on positioning with suggestion 1",
+    "Date": "2025-05-02",
+    "Time of Day": "17:30",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user02@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_34",
+    "prompt": "User question about usability scenario 2",
+    "response": "AI reply on testing with suggestion 2",
+    "Date": "2025-05-02",
+    "Time of Day": "17:33",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user02@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_35",
+    "prompt": "User question about launch plan scenario 3",
+    "response": "AI reply on testing with suggestion 3",
+    "Date": "2025-05-02",
+    "Time of Day": "18:36",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user02@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_36",
+    "prompt": "User question about fragrance scenario 4",
+    "response": "AI reply on pricing with suggestion 4",
+    "Date": "2025-05-02",
+    "Time of Day": "18:39",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user02@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_37",
+    "prompt": "User question about fragrance scenario 5",
+    "response": "AI reply on usability with suggestion 5",
+    "Date": "2025-05-02",
+    "Time of Day": "19:42",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user02@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_38",
+    "prompt": "User question about claims scenario 6",
+    "response": "AI reply on claims with suggestion 6",
+    "Date": "2025-05-02",
+    "Time of Day": "19:45",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user02@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_39",
+    "prompt": "User question about pricing scenario 7",
+    "response": "AI reply on regulatory with suggestion 7",
+    "Date": "2025-05-02",
+    "Time of Day": "20:48",
+    "Region": "EU"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_40",
+    "prompt": "User question about sustainability scenario 1",
+    "response": "AI reply on packaging with suggestion 1",
+    "Date": "2025-05-12",
+    "Time of Day": "14:10",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_41",
+    "prompt": "User question about fragrance scenario 2",
+    "response": "AI reply on fragrance with suggestion 2",
+    "Date": "2025-05-12",
+    "Time of Day": "14:13",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_42",
+    "prompt": "User question about launch plan scenario 3",
+    "response": "AI reply on regulatory with suggestion 3",
+    "Date": "2025-05-12",
+    "Time of Day": "15:16",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_43",
+    "prompt": "User question about packaging scenario 4",
+    "response": "AI reply on launch plan with suggestion 4",
+    "Date": "2025-05-12",
+    "Time of Day": "15:19",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_44",
+    "prompt": "User question about launch plan scenario 5",
+    "response": "AI reply on regulatory with suggestion 5",
+    "Date": "2025-05-12",
+    "Time of Day": "16:22",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_45",
+    "prompt": "User question about testing scenario 6",
+    "response": "AI reply on claims with suggestion 6",
+    "Date": "2025-05-12",
+    "Time of Day": "16:25",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_46",
+    "prompt": "User question about pricing scenario 1",
+    "response": "AI reply on positioning with suggestion 1",
+    "Date": "2025-05-18",
+    "Time of Day": "07:50",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_47",
+    "prompt": "User question about packaging scenario 2",
+    "response": "AI reply on pricing with suggestion 2",
+    "Date": "2025-05-18",
+    "Time of Day": "07:53",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_48",
+    "prompt": "User question about launch plan scenario 3",
+    "response": "AI reply on fragrance with suggestion 3",
+    "Date": "2025-05-18",
+    "Time of Day": "08:56",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_49",
+    "prompt": "User question about testing scenario 4",
+    "response": "AI reply on sustainability with suggestion 4",
+    "Date": "2025-05-18",
+    "Time of Day": "08:59",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_50",
+    "prompt": "User question about pricing scenario 5",
+    "response": "AI reply on claims with suggestion 5",
+    "Date": "2025-05-18",
+    "Time of Day": "09:02",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_51",
+    "prompt": "User question about fragrance scenario 6",
+    "response": "AI reply on claims with suggestion 6",
+    "Date": "2025-05-18",
+    "Time of Day": "09:05",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_52",
+    "prompt": "User question about packaging scenario 7",
+    "response": "AI reply on pricing with suggestion 7",
+    "Date": "2025-05-18",
+    "Time of Day": "10:08",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_53",
+    "prompt": "User question about claims scenario 8",
+    "response": "AI reply on regulatory with suggestion 8",
+    "Date": "2025-05-18",
+    "Time of Day": "10:11",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_54",
+    "prompt": "User question about usability scenario 9",
+    "response": "AI reply on fragrance with suggestion 9",
+    "Date": "2025-05-18",
+    "Time of Day": "11:14",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user03@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_55",
+    "prompt": "User question about positioning scenario 10",
+    "response": "AI reply on fragrance with suggestion 10",
+    "Date": "2025-05-18",
+    "Time of Day": "11:17",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_56",
+    "prompt": "User question about pricing scenario 1",
+    "response": "AI reply on usability with suggestion 1",
+    "Date": "2025-05-11",
+    "Time of Day": "22:00",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_57",
+    "prompt": "User question about sustainability scenario 2",
+    "response": "AI reply on usability with suggestion 2",
+    "Date": "2025-05-11",
+    "Time of Day": "22:03",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_58",
+    "prompt": "User question about regulatory scenario 3",
+    "response": "AI reply on packaging with suggestion 3",
+    "Date": "2025-05-11",
+    "Time of Day": "23:06",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_59",
+    "prompt": "User question about packaging scenario 4",
+    "response": "AI reply on testing with suggestion 4",
+    "Date": "2025-05-11",
+    "Time of Day": "23:09",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_60",
+    "prompt": "User question about packaging scenario 5",
+    "response": "AI reply on claims with suggestion 5",
+    "Date": "2025-05-11",
+    "Time of Day": "00:12",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_61",
+    "prompt": "User question about fragrance scenario 6",
+    "response": "AI reply on fragrance with suggestion 6",
+    "Date": "2025-05-11",
+    "Time of Day": "00:15",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_62",
+    "prompt": "User question about testing scenario 7",
+    "response": "AI reply on claims with suggestion 7",
+    "Date": "2025-05-11",
+    "Time of Day": "01:18",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_63",
+    "prompt": "User question about fragrance scenario 8",
+    "response": "AI reply on pricing with suggestion 8",
+    "Date": "2025-05-11",
+    "Time of Day": "01:21",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_64",
+    "prompt": "User question about positioning scenario 1",
+    "response": "AI reply on testing with suggestion 1",
+    "Date": "2025-05-07",
+    "Time of Day": "13:55",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_65",
+    "prompt": "User question about claims scenario 2",
+    "response": "AI reply on testing with suggestion 2",
+    "Date": "2025-05-07",
+    "Time of Day": "13:58",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_66",
+    "prompt": "User question about packaging scenario 3",
+    "response": "AI reply on usability with suggestion 3",
+    "Date": "2025-05-07",
+    "Time of Day": "14:01",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_67",
+    "prompt": "User question about usability scenario 4",
+    "response": "AI reply on packaging with suggestion 4",
+    "Date": "2025-05-07",
+    "Time of Day": "14:04",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_68",
+    "prompt": "User question about positioning scenario 5",
+    "response": "AI reply on sustainability with suggestion 5",
+    "Date": "2025-05-07",
+    "Time of Day": "15:07",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_69",
+    "prompt": "User question about regulatory scenario 6",
+    "response": "AI reply on claims with suggestion 6",
+    "Date": "2025-05-07",
+    "Time of Day": "15:10",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_70",
+    "prompt": "User question about usability scenario 7",
+    "response": "AI reply on regulatory with suggestion 7",
+    "Date": "2025-05-07",
+    "Time of Day": "16:13",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_71",
+    "prompt": "User question about usability scenario 8",
+    "response": "AI reply on sustainability with suggestion 8",
+    "Date": "2025-05-07",
+    "Time of Day": "16:16",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_72",
+    "prompt": "User question about packaging scenario 9",
+    "response": "AI reply on sustainability with suggestion 9",
+    "Date": "2025-05-07",
+    "Time of Day": "17:19",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_73",
+    "prompt": "User question about usability scenario 10",
+    "response": "AI reply on packaging with suggestion 10",
+    "Date": "2025-05-07",
+    "Time of Day": "17:22",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_74",
+    "prompt": "User question about sustainability scenario 11",
+    "response": "AI reply on positioning with suggestion 11",
+    "Date": "2025-05-07",
+    "Time of Day": "18:25",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_75",
+    "prompt": "User question about claims scenario 1",
+    "response": "AI reply on fragrance with suggestion 1",
+    "Date": "2025-05-17",
+    "Time of Day": "14:20",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_76",
+    "prompt": "User question about regulatory scenario 2",
+    "response": "AI reply on regulatory with suggestion 2",
+    "Date": "2025-05-17",
+    "Time of Day": "14:23",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_77",
+    "prompt": "User question about testing scenario 3",
+    "response": "AI reply on usability with suggestion 3",
+    "Date": "2025-05-17",
+    "Time of Day": "15:26",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_78",
+    "prompt": "User question about testing scenario 4",
+    "response": "AI reply on launch plan with suggestion 4",
+    "Date": "2025-05-17",
+    "Time of Day": "15:29",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_79",
+    "prompt": "User question about usability scenario 5",
+    "response": "AI reply on packaging with suggestion 5",
+    "Date": "2025-05-17",
+    "Time of Day": "16:32",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_80",
+    "prompt": "User question about packaging scenario 6",
+    "response": "AI reply on launch plan with suggestion 6",
+    "Date": "2025-05-17",
+    "Time of Day": "16:35",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user04@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_81",
+    "prompt": "User question about positioning scenario 7",
+    "response": "AI reply on launch plan with suggestion 7",
+    "Date": "2025-05-17",
+    "Time of Day": "17:38",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_82",
+    "prompt": "User question about packaging scenario 1",
+    "response": "AI reply on usability with suggestion 1",
+    "Date": "2025-05-02",
+    "Time of Day": "10:00",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_83",
+    "prompt": "User question about usability scenario 2",
+    "response": "AI reply on usability with suggestion 2",
+    "Date": "2025-05-02",
+    "Time of Day": "10:03",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_84",
+    "prompt": "User question about claims scenario 3",
+    "response": "AI reply on testing with suggestion 3",
+    "Date": "2025-05-02",
+    "Time of Day": "11:06",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_85",
+    "prompt": "User question about fragrance scenario 4",
+    "response": "AI reply on launch plan with suggestion 4",
+    "Date": "2025-05-02",
+    "Time of Day": "11:09",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_86",
+    "prompt": "User question about fragrance scenario 5",
+    "response": "AI reply on pricing with suggestion 5",
+    "Date": "2025-05-02",
+    "Time of Day": "12:12",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_87",
+    "prompt": "User question about testing scenario 6",
+    "response": "AI reply on usability with suggestion 6",
+    "Date": "2025-05-02",
+    "Time of Day": "12:15",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_88",
+    "prompt": "User question about packaging scenario 7",
+    "response": "AI reply on testing with suggestion 7",
+    "Date": "2025-05-02",
+    "Time of Day": "13:18",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_89",
+    "prompt": "User question about claims scenario 8",
+    "response": "AI reply on packaging with suggestion 8",
+    "Date": "2025-05-02",
+    "Time of Day": "13:21",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_90",
+    "prompt": "User question about launch plan scenario 1",
+    "response": "AI reply on testing with suggestion 1",
+    "Date": "2025-05-18",
+    "Time of Day": "07:05",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_91",
+    "prompt": "User question about testing scenario 2",
+    "response": "AI reply on usability with suggestion 2",
+    "Date": "2025-05-18",
+    "Time of Day": "07:08",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_92",
+    "prompt": "User question about launch plan scenario 3",
+    "response": "AI reply on sustainability with suggestion 3",
+    "Date": "2025-05-18",
+    "Time of Day": "08:11",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_93",
+    "prompt": "User question about fragrance scenario 4",
+    "response": "AI reply on launch plan with suggestion 4",
+    "Date": "2025-05-18",
+    "Time of Day": "08:14",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_94",
+    "prompt": "User question about sustainability scenario 5",
+    "response": "AI reply on launch plan with suggestion 5",
+    "Date": "2025-05-18",
+    "Time of Day": "09:17",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_95",
+    "prompt": "User question about pricing scenario 6",
+    "response": "AI reply on testing with suggestion 6",
+    "Date": "2025-05-18",
+    "Time of Day": "09:20",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user05@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_96",
+    "prompt": "User question about pricing scenario 7",
+    "response": "AI reply on launch plan with suggestion 7",
+    "Date": "2025-05-18",
+    "Time of Day": "10:23",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_97",
+    "prompt": "User question about regulatory scenario 1",
+    "response": "AI reply on claims with suggestion 1",
+    "Date": "2025-05-05",
+    "Time of Day": "13:20",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_98",
+    "prompt": "User question about sustainability scenario 2",
+    "response": "AI reply on positioning with suggestion 2",
+    "Date": "2025-05-05",
+    "Time of Day": "13:23",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_99",
+    "prompt": "User question about sustainability scenario 3",
+    "response": "AI reply on sustainability with suggestion 3",
+    "Date": "2025-05-05",
+    "Time of Day": "14:26",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_100",
+    "prompt": "User question about regulatory scenario 4",
+    "response": "AI reply on testing with suggestion 4",
+    "Date": "2025-05-05",
+    "Time of Day": "14:29",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_101",
+    "prompt": "User question about claims scenario 5",
+    "response": "AI reply on claims with suggestion 5",
+    "Date": "2025-05-05",
+    "Time of Day": "15:32",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_1",
+    "__msg_id": "msg_102",
+    "prompt": "User question about fragrance scenario 6",
+    "response": "AI reply on sustainability with suggestion 6",
+    "Date": "2025-05-05",
+    "Time of Day": "15:35",
+    "Region": "LATAM"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_103",
+    "prompt": "User question about usability scenario 1",
+    "response": "AI reply on launch plan with suggestion 1",
+    "Date": "2025-05-06",
+    "Time of Day": "09:45",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_104",
+    "prompt": "User question about packaging scenario 2",
+    "response": "AI reply on regulatory with suggestion 2",
+    "Date": "2025-05-06",
+    "Time of Day": "09:48",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_105",
+    "prompt": "User question about usability scenario 3",
+    "response": "AI reply on regulatory with suggestion 3",
+    "Date": "2025-05-06",
+    "Time of Day": "10:51",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_106",
+    "prompt": "User question about regulatory scenario 4",
+    "response": "AI reply on sustainability with suggestion 4",
+    "Date": "2025-05-06",
+    "Time of Day": "10:54",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_107",
+    "prompt": "User question about regulatory scenario 5",
+    "response": "AI reply on packaging with suggestion 5",
+    "Date": "2025-05-06",
+    "Time of Day": "11:57",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_108",
+    "prompt": "User question about launch plan scenario 6",
+    "response": "AI reply on regulatory with suggestion 6",
+    "Date": "2025-05-06",
+    "Time of Day": "11:00",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_109",
+    "prompt": "User question about regulatory scenario 7",
+    "response": "AI reply on claims with suggestion 7",
+    "Date": "2025-05-06",
+    "Time of Day": "12:03",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_110",
+    "prompt": "User question about positioning scenario 8",
+    "response": "AI reply on pricing with suggestion 8",
+    "Date": "2025-05-06",
+    "Time of Day": "12:06",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_111",
+    "prompt": "User question about usability scenario 9",
+    "response": "AI reply on positioning with suggestion 9",
+    "Date": "2025-05-06",
+    "Time of Day": "13:09",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_112",
+    "prompt": "User question about usability scenario 10",
+    "response": "AI reply on pricing with suggestion 10",
+    "Date": "2025-05-06",
+    "Time of Day": "13:12",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_113",
+    "prompt": "User question about launch plan scenario 11",
+    "response": "AI reply on fragrance with suggestion 11",
+    "Date": "2025-05-06",
+    "Time of Day": "14:15",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_2",
+    "__msg_id": "msg_114",
+    "prompt": "User question about pricing scenario 12",
+    "response": "AI reply on testing with suggestion 12",
+    "Date": "2025-05-06",
+    "Time of Day": "14:18",
+    "Region": "NA"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_115",
+    "prompt": "User question about packaging scenario 1",
+    "response": "AI reply on packaging with suggestion 1",
+    "Date": "2025-05-03",
+    "Time of Day": "07:35",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_116",
+    "prompt": "User question about claims scenario 2",
+    "response": "AI reply on usability with suggestion 2",
+    "Date": "2025-05-03",
+    "Time of Day": "07:38",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_117",
+    "prompt": "User question about claims scenario 3",
+    "response": "AI reply on pricing with suggestion 3",
+    "Date": "2025-05-03",
+    "Time of Day": "08:41",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_118",
+    "prompt": "User question about fragrance scenario 4",
+    "response": "AI reply on positioning with suggestion 4",
+    "Date": "2025-05-03",
+    "Time of Day": "08:44",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_119",
+    "prompt": "User question about packaging scenario 5",
+    "response": "AI reply on usability with suggestion 5",
+    "Date": "2025-05-03",
+    "Time of Day": "09:47",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_120",
+    "prompt": "User question about positioning scenario 6",
+    "response": "AI reply on pricing with suggestion 6",
+    "Date": "2025-05-03",
+    "Time of Day": "09:50",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_121",
+    "prompt": "User question about fragrance scenario 7",
+    "response": "AI reply on testing with suggestion 7",
+    "Date": "2025-05-03",
+    "Time of Day": "10:53",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_122",
+    "prompt": "User question about claims scenario 8",
+    "response": "AI reply on pricing with suggestion 8",
+    "Date": "2025-05-03",
+    "Time of Day": "10:56",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_123",
+    "prompt": "User question about regulatory scenario 9",
+    "response": "AI reply on claims with suggestion 9",
+    "Date": "2025-05-03",
+    "Time of Day": "11:59",
+    "Region": "APAC"
+  },
+  {
+    "FakeEmail": "user06@demo.com",
+    "thread_id": "thread_3",
+    "__msg_id": "msg_124",
+    "prompt": "User question about sustainability scenario 10",
+    "response": "AI reply on claims with suggestion 10",
+    "Date": "2025-05-03",
+    "Time of Day": "11:02",
+    "Region": "APAC"
+  }
+]

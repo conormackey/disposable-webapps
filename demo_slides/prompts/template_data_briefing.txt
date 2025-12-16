@@ -1,0 +1,10 @@
+Data briefing (paste into your prompt):
+- Rows represent: <what a row is>
+- Key columns: <name : type : meaning> …
+- Time fields: <which cols, format, timezone>
+- IDs/keys: <unique? yes/no; primary key?>
+- Sensitive fields: <list or “none”> — do NOT display or store
+- Sample rows (2–5): 
+  1) <row1>
+  2) <row2>
+  ...

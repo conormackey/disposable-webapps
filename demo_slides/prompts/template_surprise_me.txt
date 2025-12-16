@@ -1,0 +1,1 @@
+After meeting the requirements, add one additional visualization or interaction that helps answer the research questions. Keep it lightweight and explain in one sentence why it’s useful.

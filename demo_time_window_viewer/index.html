@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Task 1 Time-Window Explorer (T2 + T3)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #fafafa;
+      --panel: #ffffff;
+      --border: #e0e0e0;
+      --muted: #666;
+      --accent: #0b72ff;
+      --relevant: #2e7d32;
+      --irrelevant: #e91e63;
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: #222;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--panel);
+      position: sticky;
+      top: 0; z-index: 10;
+    }
+    header h1 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 8px 0 0;
+    }
+    #container { display: grid; grid-template-columns: 300px 1fr; height: calc(100% - 52px); }
+    #controls {
+      padding: 12px;
+      border-right: 1px solid var(--border);
+      background: var(--panel);
+      overflow: auto;
+    }
+    #main { padding: 10px; overflow: auto; }
+    .section { margin-bottom: 14px; }
+    .section h3 { margin: 0 0 8px 0; font-size: 14px; color: var(--muted); font-weight: 600; }
+    label { font-size: 13px; color: #333; display: inline-block; margin-bottom: 4px; }
+    input[type="number"], select { width: 100%; padding: 6px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; }
+    input[type="range"] { width: 100%; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    button { padding: 6px 10px; border: 1px solid var(--border); background: #fff; border-radius: 6px; cursor: pointer; font-size: 13px; }
+    button.primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+    .kpi { display: grid; grid-template-columns: repeat(4, minmax(120px, 1fr)); gap: 8px; margin: 8px 0 4px; }
+    .kpi .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 10px; }
+    .kpi .card h4 { margin: 0; font-size: 12px; color: var(--muted); font-weight: 600; }
+    .kpi .card .val { font-size: 18px; font-weight: 700; margin-top: 6px; }
+    .legend { font-size: 12px; color: var(--muted); }
+    .legend .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin: 0 6px 0 12px; vertical-align: middle; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 10px; }
+    #status { font-size: 12px; color: var(--muted); }
+    details summary { cursor: pointer; }
+    code { background: #f6f6f6; padding: 1px 4px; border-radius: 4px; }
+    .subpanel { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 8px; height: 360px; overflow: auto; }
+    .item { padding: 6px; border-bottom: 1px solid var(--border); cursor: pointer; }
+    .item:hover { background: #f7faff; }
+    .meta { font-size: 12px; color: var(--muted); }
+    .badge { display:inline-block; padding:2px 6px; border-radius: 999px; font-size: 11px; border: 1px solid var(--border); margin-left: 6px; }
+    .badge.relevant { color: var(--relevant); border-color: var(--relevant); }
+    .badge.irrelevant { color: var(--irrelevant); border-color: var(--irrelevant); }
+    .msg { margin: 6px 0; padding: 6px 8px; border-left: 3px solid #ddd; background: #fff; border-radius: 6px; }
+    .msg .role { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Task 1 Time-Window Explorer (Demo)</h1>
+    <button id="loadData" class="primary">Load T2 + T3</button>
+    <span id="status"></span>
+  </header>
+  <div id="container">
+    <aside id="controls">
+      <div class="section">
+        <h3>Data Source</h3>
+        <label for="datasetMode">Dataset</label>
+        <select id="datasetMode">
+          <option value="demo" selected>Demo (synthetic bundle)</option>
+          <option value="local">Local files (upload)</option>
+        </select>
+        <div class="hint">Demo loads bundled fake data; use Local to test your own files.</div>
+      </div>
+      <div class="section">
+        <h3>Task 1 Window (hour-of-day)</h3>
+        <div class="row">
+          <div>
+            <label for="startHour">Start hour</label>
+            <input id="startHour" type="number" min="0" max="23" value="9" />
+          </div>
+          <div>
+            <label for="endHour">End hour</label>
+            <input id="endHour" type="number" min="0" max="23" value="14" />
+          </div>
+        </div>
+        <div class="hint">If start > end, the window wraps past midnight.</div>
+      </div>
+
+      <div class="section">
+        <h3>Filters</h3>
+        <label for="regionSel">Region</label>
+        <select id="regionSel"><option value="__ALL__">All regions</option></select>
+        <div class="hint">Auto-detected from available Region columns.</div>
+        <div style="height:8px"></div>
+        <label for="dateSel">Date</label>
+        <select id="dateSel"><option value="__ALL__">All dates</option></select>
+      </div>
+
+      <div class="section">
+        <h3>Actions</h3>
+        <div class="btn-row">
+          <button id="apply">Apply Window</button>
+          <button id="exportCsv">Export Filtered CSV</button>
+          <button id="exportJson">Export Filtered JSON</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Local Files (fallback)</h3>
+        <div class="hint">If opening this page via file://, browser security blocks loading local files with fetch. Either run a local server (recommended) or select files below.</div>
+        <div style="height:6px"></div>
+        <label>T2 chats (.xlsx or .json)</label>
+        <input id="t2ChatsFile" type="file" accept=".xlsx,.json" />
+        <div class="row" style="margin-top:6px;">
+          <div>
+            <label>T2 labels (.xlsx or .json)</label>
+            <input id="t2LabelsFile" type="file" accept=".xlsx,.json" />
+          </div>
+          <div></div>
+        </div>
+        <div class="row" style="margin-top:6px;">
+          <div>
+            <label>T3 chats (.xlsx or .json)</label>
+            <input id="t3ChatsFile" type="file" accept=".xlsx,.json" />
+          </div>
+          <div>
+            <label>T3 labels (.xlsx or .json)</label>
+            <input id="t3LabelsFile" type="file" accept=".xlsx,.json" />
+          </div>
+        </div>
+        <div class="btn-row" style="margin-top:8px;">
+          <button id="loadLocal">Load From Files</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>About</h3>
+        <details>
+          <summary>Data assumptions</summary>
+          <div class="hint">
+            Uses thread start time (first message) for time-of-day. Labels come from thread label files. Region is pulled from the most-populated column containing the word "Region".
+          </div>
+        </details>
+      </div>
+    </aside>
+
+    <main id="main">
+      <div class="kpi">
+        <div class="card"><h4>Threads (all)</h4><div class="val" id="kpiThreads">–</div></div>
+        <div class="card"><h4>Relevant</h4><div class="val" id="kpiRelevant">–</div></div>
+        <div class="card"><h4>Relevant inside window</h4><div class="val" id="kpiInside">–</div></div>
+        <div class="card"><h4>Relevant outside window</h4><div class="val" id="kpiOutside">–</div></div>
+      </div>
+      <div class="legend">
+        <span class="dot" style="background: var(--relevant)"></span> relevant
+        <span class="dot" style="background: var(--irrelevant)"></span> irrelevant
+      </div>
+
+      <div class="row2" style="margin-top:10px;">
+        <div class="panel">
+          <h3 style="margin:0 0 6px 0; font-size:14px; color:var(--muted)">Time of day (thread start)</h3>
+          <div id="hist"></div>
+        </div>
+        <div class="panel">
+          <h3 style="margin:0 0 6px 0; font-size:14px; color:var(--muted)">Scatter by time (thread start)</h3>
+          <div id="scatter"></div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:12px;">
+        <h3 style="margin:0 0 6px 0; font-size:14px; color:var(--muted)">Inside vs Outside by Region</h3>
+        <div id="byRegion"></div>
+      </div>
+
+      <div class="panel" style="margin-top:12px;">
+        <h3 style="margin:0 0 6px 0; font-size:14px; color:var(--muted)">Thread Browser</h3>
+        <div class="row" style="align-items:center; margin-bottom:8px;">
+          <div>
+            <label for="bucketSel">Browse bucket</label>
+            <select id="bucketSel"></select>
+          </div>
+          <div class="hint">This list respects current filters and window.</div>
+        </div>
+        <div class="row2">
+          <div class="subpanel" id="threadList"></div>
+          <div class="subpanel" id="threadDetail"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Hardcoded date mapping: map known non-numeric tokens -> YYYY-MM-DD
+    // NOTE: keys are matched case-insensitively; add all remaining tokens here after running the helper script.
+    const DATE_CANON_MAP = {
+      // Known tokens (case-insensitive, whitespace ignored)
+      'mon0513mon': '2024-05-13',
+      'tue0514tue': '2024-05-14',
+      'wed0515wed': '2024-05-15',
+      'thu0516thu': '2024-05-16',
+    };
+    // Attempt to load Plotly from multiple sources; fallback ordering
+    async function ensurePlotly() {
+      if (window.Plotly) return;
+      const sources = [
+        'vendor/plotly-2.30.0.min.js',
+        'https://cdn.plot.ly/plotly-2.30.0.min.js',
+        'https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.30.0/plotly.min.js',
+        'https://unpkg.com/plotly.js-dist-min@2.30.0/plotly.min.js'
+      ];
+      let lastErr = '';
+      for (const src of sources) {
+        try {
+          await new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = src; s.async = true;
+            s.onload = () => resolve();
+            s.onerror = () => reject(new Error('failed to load ' + src));
+            document.head.appendChild(s);
+          });
+          if (window.Plotly) return;
+        } catch (e) { lastErr = String(e); }
+      }
+      throw new Error('Plotly not available. ' + lastErr);
+    }
+
+    // Ensure SheetJS if reading Excel; JSON path does not require it
+    async function ensureXlsx() {
+      if (window.XLSX) return;
+      const sources = [
+        'vendor/xlsx.full.min.js',
+        'https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js',
+        'https://unpkg.com/xlsx/dist/xlsx.full.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.19.3/xlsx.full.min.js'
+      ];
+      let lastErr = '';
+      for (const src of sources) {
+        try {
+          await new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = src; s.async = true;
+            s.onload = () => resolve();
+            s.onerror = () => reject(new Error('failed to load ' + src));
+            document.head.appendChild(s);
+          });
+          if (window.XLSX) return; // loaded
+        } catch (e) { lastErr = String(e); }
+      }
+      throw new Error('XLSX not available. ' + lastErr);
+    }
+
+    function pad2(n){ return (n<10?"0":"") + n; }
+
+    function normalizeDateStr(val){
+      if (!val && val !== 0) return '';
+      // Already a Date
+      if (val instanceof Date) return `${val.getFullYear()}-${pad2(val.getMonth()+1)}-${pad2(val.getDate())}`;
+      const s0 = String(val).trim();
+      if (!s0) return '';
+      // Only allow numeric YYYY-MM-DD or explicit hardcoded tokens
+      // 1) Direct canonical numeric
+      if (/^\d{4}-\d{2}-\d{2}$/.test(s0)) return s0;
+      const key = s0.replace(/\s+/g,'').toLowerCase();
+      if (Object.prototype.hasOwnProperty.call(DATE_CANON_MAP, key)) return DATE_CANON_MAP[key];
+      // 2) Simple numeric normalization with '-' or '/'
+      if (s0.indexOf('-') !== -1 || s0.indexOf('/') !== -1) {
+        let s = s0.replace(/\//g, '-');
+        const parts = s.split('-').map(x => x.trim()).filter(x => x.length > 0);
+        if (parts.length === 3) {
+          let y, m, d;
+          if (parts[0].length === 4) { // Y-M-D
+            y = parseInt(parts[0], 10); m = parseInt(parts[1], 10); d = parseInt(parts[2], 10);
+          } else if (parts[2].length === 4) { // M-D-Y
+            y = parseInt(parts[2], 10); m = parseInt(parts[0], 10); d = parseInt(parts[1], 10);
+          }
+          if (y && m>=1 && m<=12 && d>=1 && d<=31) return `${y}-${pad2(m)}-${pad2(d)}`;
+        }
+      }
+      return ''; // ignore unknown non-numeric dates (ensures dropdown only shows canonical numeric dates)
+    }
+
+    function getTimeHMStr(row){
+      let t = row["Time of Day"]; // could be number/string
+      if (t !== undefined && t !== null && t !== "") {
+        if (typeof t === 'number' && window.XLSX && XLSX.SSF && XLSX.SSF.parse_date_code) {
+          const dt = XLSX.SSF.parse_date_code(t);
+          if (dt && typeof dt.H === 'number') return `${pad2(dt.H)}:${pad2(dt.M||0)}`;
+        }
+        const s = String(t).trim();
+        const m = s.match(/\b(\d{1,2}):(\d{2})/);
+        if (m) return `${pad2(+m[1])}:${m[2]}`;
+        return s;
+      }
+      let d = row["Date_x"] || row["Date"] || row["DateTime"];
+      if (d instanceof Date) return `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+      if (typeof d === 'number' && window.XLSX && XLSX.SSF && XLSX.SSF.parse_date_code) {
+        const dt = XLSX.SSF.parse_date_code(d);
+        if (dt && typeof dt.H === 'number') return `${pad2(dt.H)}:${pad2(dt.M||0)}`;
+      }
+      const s = String(d||"");
+      const m = s.match(/\b(\d{1,2}):(\d{2})/);
+      if (m) return `${pad2(+m[1])}:${m[2]}`;
+      return "";
+    }
+
+    function pickDateRaw(row){
+      // Prefer canonical columns, then scan any key containing 'date'
+      const prefer = ["Date_x", "Date", "DateTime"];
+      for (const k of prefer) if (k in row && row[k] !== undefined && row[k] !== null && String(row[k]).trim() !== '') return row[k];
+      const keys = Object.keys(row || {});
+      for (const k of keys) {
+        const kl = k.toLowerCase();
+        if (kl.includes('date')) {
+          const v = row[k];
+          if (v !== undefined && v !== null && String(v).trim() !== '') return v;
+        }
+      }
+      return '';
+    }
+
+    function getDateYMD(row){
+      const d = pickDateRaw(row);
+      if (typeof d === 'number' && window.XLSX && XLSX.SSF && XLSX.SSF.parse_date_code) {
+        const dt = XLSX.SSF.parse_date_code(d);
+        if (dt && dt.y && dt.m && dt.d) return `${dt.y}-${pad2(dt.m)}-${pad2(dt.d)}`;
+      }
+      return normalizeDateStr(d);
+    }
+
+    function hourFromHHMM(hm){
+      const m = (hm||"").match(/^(\d{1,2}):(\d{2})/);
+      if (!m) return null; return Math.max(0, Math.min(23, parseInt(m[1],10)));
+    }
+
+    function insideWindow(hour, startH, endH){
+      if (hour == null) return false;
+      if (startH <= endH) return hour >= startH && hour <= endH;
+      // wrap past midnight
+      return (hour >= startH) || (hour <= endH);
+    }
+
+    // Attempt to read Excel first, then JSON fallback
+    async function loadChatsAndLabels(kind) {
+      const modeSel = document.getElementById('datasetMode');
+      const mode = modeSel ? modeSel.value : 'demo';
+      let chatPathX = null, labelPathX = null, chatPathJ = null, labelPathJ = null;
+      if (mode === 'demo') {
+        const base = 'demo_data/';
+        if (kind === 'T2') {
+          chatPathJ  = base + 'demo_T2_chats.json';
+          labelPathJ = base + 'demo_T2_labels.json';
+        } else {
+          chatPathJ  = base + 'demo_T3_chats.json';
+          labelPathJ = base + 'demo_T3_labels.json';
+        }
+      } else if (mode === 'local') {
+        // local handled elsewhere
+        throw new Error('local mode handled separately');
+      } else {
+        throw new Error('unknown dataset mode: ' + mode);
+      }
+
+      // Try JSON first if present
+      try {
+        const [c, l] = await Promise.all([
+          fetch(chatPathJ).then(r => { if(!r.ok) throw new Error('no json'); return r.json(); }),
+          fetch(labelPathJ).then(r => { if(!r.ok) throw new Error('no json'); return r.json(); })
+        ]);
+        return [c, l, 'json'];
+      } catch (_) {
+        // Fallback to Excel
+        await ensureXlsx();
+        const rowsFromXlsx = async (path) => {
+          const res = await fetch(path);
+          const buf = await res.arrayBuffer();
+          const wb = XLSX.read(buf, { type: 'array' });
+          const ws = wb.Sheets[wb.SheetNames[0]];
+          return XLSX.utils.sheet_to_json(ws, { defval: '', raw: false, cellDates: true });
+        };
+        const [c, l] = await Promise.all([
+          rowsFromXlsx(chatPathX), rowsFromXlsx(labelPathX)
+        ]);
+        return [c, l, 'xlsx'];
+      }
+    }
+
+    async function readLocalFileToRows(file) {
+      const name = (file && file.name) ? file.name.toLowerCase() : '';
+      if (!file) throw new Error('missing file');
+      if (name.endsWith('.json')) {
+        const text = await file.text();
+        return JSON.parse(text);
+      }
+      if (name.endsWith('.xlsx')) {
+        await ensureXlsx();
+        const buf = await file.arrayBuffer();
+        const wb = XLSX.read(buf, { type: 'array' });
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        return XLSX.utils.sheet_to_json(ws, { defval: '', raw: false, cellDates: true });
+      }
+      throw new Error('Unsupported file type: ' + name);
+    }
+
+    // Global in-memory dataset
+    const DATA = {
+      threads: [], // { key, user, thread_id, label, reason, comment, startHour, dateYMD, region, group }
+      threadMessages: {}, // key -> [{prompt, response, dateYMD, timeHM}]
+      meta: {
+        regionColumn: null,
+        groupsLoaded: []
+      }
+    };
+
+    function buildThreadRecords(chatRows, labelRows, kind){
+      // Build per-thread meta from labels: take first seen
+      const labMap = new Map(); // key: user|thread -> {label, reason, comment}
+      for (const r of labelRows) {
+        const u = r.FakeEmail; const t = r.thread_id; if(!u||!t) continue;
+        const key = `${u}|${t}`;
+        if (!labMap.has(key)) labMap.set(key, {
+          label: (r.label||'').toLowerCase(),
+          reason: r.irrelevant_reason || null,
+          comment: r.comment || ''
+        });
+      }
+
+      // Detect best region column
+      let regionCols = new Map();
+      for (const k of Object.keys(chatRows[0]||{})) {
+        if (/region/i.test(k)) regionCols.set(k, 0);
+      }
+      for (const row of chatRows) {
+        for (const [k] of regionCols) {
+          if (row[k] !== undefined && row[k] !== null && String(row[k]).trim() !== '') {
+            regionCols.set(k, regionCols.get(k)+1);
+          }
+        }
+      }
+      // choose the most populated
+      let chosenRegionCol = null, maxCount = -1;
+      for (const [k, cnt] of regionCols) { if (cnt > maxCount) { maxCount = cnt; chosenRegionCol = k; } }
+      if (!DATA.meta.regionColumn && chosenRegionCol) DATA.meta.regionColumn = chosenRegionCol;
+
+      // Group chats by user-thread to compute start time and date
+      const grouped = new Map(); // (u|t) -> array of rows
+      for (const row of chatRows) {
+        const u = row.FakeEmail; const t = row.thread_id; if(!u||!t) continue;
+        const baseKey = `${u}|${t}`;
+        if (!grouped.has(baseKey)) grouped.set(baseKey, []);
+        grouped.get(baseKey).push(row);
+      }
+      for (const [baseKey, arr] of grouped) {
+        // sort by __msg_id lexicographically
+        const idNum = (r) => { const m = String(r.__msg_id||'').match(/(\d+)/); return m ? parseInt(m[1],10) : Number.MAX_SAFE_INTEGER; };
+        arr.sort((a,b)=> idNum(a) - idNum(b));
+        const first = arr[0] || {};
+        const hm = getTimeHMStr(first);
+        const hour = hourFromHHMM(hm);
+        const dateY = getDateYMD(first);
+        const dateYNorm = normalizeDateStr(dateY);
+        const [user, thread] = baseKey.split('|');
+        const lab = labMap.get(baseKey) || { label: '', reason: null, comment: '' };
+        const key = `${kind}|${user}|${thread}`;
+        const regionVal = chosenRegionCol ? (first[chosenRegionCol] || '') : '';
+        DATA.threads.push({
+          key, user, thread_id: thread, group: kind,
+          label: lab.label || '', reason: lab.reason, comment: lab.comment,
+          startHour: hour, dateYMD: dateY, dateYMDNorm: dateYNorm, region: String(regionVal||'').trim()
+        });
+        // store messages for browser
+        const seen = new Set();
+        const msgs = [];
+        let prevPair = null;
+        arr.forEach(r => {
+          const mid = String(r.__msg_id||'');
+          if (mid && seen.has(mid)) return; // guard against duplicates
+          seen.add(mid);
+          const pair = {
+            msg_id: mid,
+            prompt: r.prompt || '',
+            response: r.response || '',
+            dateYMD: getDateYMD(r),
+            timeHM: getTimeHMStr(r)
+          };
+          // drop consecutive identical prompt+response pairs
+          const sig = pair.prompt + '\n' + pair.response;
+          if (prevPair && (prevPair.prompt + '\n' + prevPair.response) === sig) {
+            return;
+          }
+          prevPair = pair;
+          msgs.push(pair);
+        });
+        DATA.threadMessages[key] = msgs;
+      }
+      if (!DATA.meta.groupsLoaded.includes(kind)) DATA.meta.groupsLoaded.push(kind);
+    }
+
+    function populateFilters(){
+      const regionSel = document.getElementById('regionSel');
+      const dateSel = document.getElementById('dateSel');
+      // Region values
+      const regions = Array.from(new Set(DATA.threads.map(r=> r.region).filter(v=> v && v !== 'NaN'))).sort();
+      regionSel.innerHTML = '<option value="__ALL__">All regions</option>' + regions.map(r=>`<option>${r}</option>`).join('');
+      // Dates (use canonical dateYMDNorm computed per thread)
+      let dates = Array.from(new Set(DATA.threads.map(r=> r.dateYMDNorm).filter(Boolean))).sort();
+      // Keep strictly numeric canonical dates only (YYYY-MM-DD)
+      dates = dates.filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d));
+      dateSel.innerHTML = '<option value="__ALL__">All dates</option>' + dates.map(d=>`<option>${d}</option>`).join('');
+    }
+
+    function computeStats(){
+      const startH = parseInt(document.getElementById('startHour').value, 10);
+      const endH   = parseInt(document.getElementById('endHour').value, 10);
+      const region = document.getElementById('regionSel').value;
+      const date   = document.getElementById('dateSel').value;
+      const rows = DATA.threads.filter(r => {
+        if (region !== '__ALL__' && r.region !== region) return false;
+        if (date !== '__ALL__' && r.dateYMDNorm !== date) return false;
+        return true;
+      });
+      const totalThreads = rows.length;
+      const relevant = rows.filter(r => r.label === 'relevant');
+      const inside = relevant.filter(r => insideWindow(r.startHour, startH, endH));
+      const outside = relevant.filter(r => !insideWindow(r.startHour, startH, endH));
+      return { rows, totalThreads, relevantCount: relevant.length, insideCount: inside.length, outsideCount: outside.length, startH, endH };
+    }
+
+    function updateKpis(stats){
+      document.getElementById('kpiThreads').textContent = stats.totalThreads.toLocaleString();
+      document.getElementById('kpiRelevant').textContent = stats.relevantCount.toLocaleString();
+      document.getElementById('kpiInside').textContent = `${stats.insideCount.toLocaleString()} (${stats.relevantCount?Math.round(100*stats.insideCount/stats.relevantCount):0}%)`;
+      document.getElementById('kpiOutside').textContent = `${stats.outsideCount.toLocaleString()} (${stats.relevantCount?Math.round(100*stats.outsideCount/stats.relevantCount):0}%)`;
+    }
+
+    function drawHist(stats){
+      const rows = stats.rows;
+      const xRel = rows.filter(r=> r.label==='relevant' && r.startHour!=null).map(r=> r.startHour);
+      const xIrr = rows.filter(r=> r.label==='irrelevant' && r.startHour!=null).map(r=> r.startHour);
+      const trRel = { x: xRel, type: 'histogram', name: 'relevant', opacity: 0.9, marker: { color: getComputedStyle(document.documentElement).getPropertyValue('--relevant').trim() }, xbins: { start: 0, end: 24, size: 1 } };
+      const trIrr = { x: xIrr, type: 'histogram', name: 'irrelevant', opacity: 0.9, marker: { color: getComputedStyle(document.documentElement).getPropertyValue('--irrelevant').trim() }, xbins: { start: 0, end: 24, size: 1 } };
+      const layout = { barmode: 'group', margin: { l:40, r:10, t:10, b:40 }, xaxis: { title: 'hour of day (0–23)', dtick: 1 }, yaxis: { title: 'threads' }, shapes: windowBandShapes(stats.startH, stats.endH) };
+      Plotly.newPlot('hist', [trRel, trIrr], layout, {displayModeBar: false});
+    }
+
+    function drawScatter(stats){
+      const rows = stats.rows.filter(r=> r.startHour!=null);
+      const rel = rows.filter(r=> r.label==='relevant');
+      const irr = rows.filter(r=> r.label==='irrelevant');
+      const jitter = () => (Math.random()-0.5)*0.45;
+      const trRel = { x: rel.map(r=> r.startHour + jitter()), y: rel.map(r=> 1), name: 'relevant', mode: 'markers', type: 'scatter', marker: { color: getComputedStyle(document.documentElement).getPropertyValue('--relevant').trim() } };
+      const trIrr = { x: irr.map(r=> r.startHour + jitter()), y: irr.map(r=> 1.4), name: 'irrelevant', mode: 'markers', type: 'scatter', marker: { color: getComputedStyle(document.documentElement).getPropertyValue('--irrelevant').trim() } };
+      const layout = { margin: { l:40, r:10, t:10, b:40 }, xaxis: { title: 'hour of day (0–23)', dtick: 1, range: [-0.5, 23.5] }, yaxis: { showticklabels: false, range: [0.5, 1.9] }, shapes: windowBandShapes(stats.startH, stats.endH) };
+      Plotly.newPlot('scatter', [trRel, trIrr], layout, {displayModeBar: false});
+    }
+
+    function drawByRegion(stats){
+      const rows = stats.rows.filter(r=> r.label==='relevant');
+      const startH = stats.startH, endH = stats.endH;
+      const by = new Map(); // region -> { inside, outside }
+      for (const r of rows) {
+        const key = r.region || '(unknown)';
+        if (!by.has(key)) by.set(key, { inside: 0, outside: 0 });
+        if (insideWindow(r.startHour, startH, endH)) by.get(key).inside++; else by.get(key).outside++;
+      }
+      const cats = Array.from(by.keys()).sort();
+      const inside = cats.map(k => by.get(k).inside);
+      const outside = cats.map(k => by.get(k).outside);
+      const trIn = { x: cats, y: inside, type: 'bar', name: 'inside', marker: { color: getComputedStyle(document.documentElement).getPropertyValue('--relevant').trim() } };
+      const trOut= { x: cats, y: outside, type: 'bar', name: 'outside', marker: { color: '#888' } };
+      const layout = { barmode: 'group', margin: { l:40, r:10, t:10, b:80 }, xaxis: { automargin: true }, yaxis: { title: 'relevant threads' } };
+      Plotly.newPlot('byRegion', [trIn, trOut], layout, {displayModeBar: false});
+    }
+
+    function windowBandShapes(startH, endH){
+      const color = 'rgba(11,114,255,0.08)';
+      if (startH <= endH) {
+        return [{ type: 'rect', xref: 'x', yref: 'paper', x0: startH, x1: endH, y0: 0, y1: 1, fillcolor: color, line: { width: 0 } }];
+      } else {
+        return [
+          { type: 'rect', xref: 'x', yref: 'paper', x0: startH, x1: 23.5, y0: 0, y1: 1, fillcolor: color, line: { width: 0 } },
+          { type: 'rect', xref: 'x', yref: 'paper', x0: -0.5,  x1: endH, y0: 0, y1: 1, fillcolor: color, line: { width: 0 } }
+        ];
+      }
+    }
+
+    function refresh(){
+      const stats = computeStats();
+      updateKpis(stats);
+      drawHist(stats);
+      drawScatter(stats);
+      drawByRegion(stats);
+      buildAndRenderBuckets(stats);
+    }
+
+    function buildAndRenderBuckets(stats){
+      const rows = stats.rows;
+      const startH = stats.startH, endH = stats.endH;
+      const relIn  = []; const relOut = []; const irrIn = []; const irrOut = [];
+      for (const r of rows) {
+        const inside = insideWindow(r.startHour, startH, endH);
+        if (r.label === 'relevant') {
+          (inside ? relIn : relOut).push(r);
+        } else if (r.label === 'irrelevant') {
+          (inside ? irrIn : irrOut).push(r);
+        }
+      }
+      const buckets = {
+        relIn:  { title: `Relevant inside (${relIn.length})`,  rows: relIn },
+        relOut: { title: `Relevant outside (${relOut.length})`, rows: relOut },
+        irrIn:  { title: `Irrelevant inside (${irrIn.length})`,  rows: irrIn },
+        irrOut: { title: `Irrelevant outside (${irrOut.length})`, rows: irrOut },
+      };
+      const sel = document.getElementById('bucketSel');
+      const order = ['relIn','relOut','irrIn','irrOut'];
+      const opts = order.map(k=> `<option value="${k}">${buckets[k].title}</option>`).join('');
+      const previous = sel.value || 'relIn';
+      sel.innerHTML = opts;
+      sel.value = (buckets[previous] ? previous : 'relIn');
+      sel.onchange = () => renderThreadList(buckets[sel.value]);
+      renderThreadList(buckets[sel.value]);
+    }
+
+    function renderThreadList(bucket){
+      const list = document.getElementById('threadList');
+      list.innerHTML = '';
+      if (!bucket || !bucket.rows || bucket.rows.length === 0) {
+        list.innerHTML = '<div class="hint">No threads.</div>';
+        document.getElementById('threadDetail').innerHTML = '';
+        return;
+      }
+      // sort by date/time then user for consistent order
+      const sorted = bucket.rows.slice().sort((a,b)=> (a.dateYMD||'').localeCompare(b.dateYMD||'') || (a.startHour??-1)-(b.startHour??-1) || a.user.localeCompare(b.user));
+      sorted.forEach((r, idx) => {
+        const div = document.createElement('div');
+        div.className = 'item';
+        const badgeCls = r.label === 'relevant' ? 'badge relevant' : 'badge irrelevant';
+        div.innerHTML = `<div><strong>${r.user}</strong> • ${r.thread_id} <span class="badge ${badgeCls}">${r.label||'unlabeled'}</span></div>
+                         <div class="meta">${r.group} • ${r.region||'(unknown region)'} • ${r.dateYMD||''} ${Number.isInteger(r.startHour)?('• '+r.startHour+':00'):''}</div>`;
+        div.onclick = () => renderThreadDetail(r);
+        list.appendChild(div);
+        if (idx === 0) renderThreadDetail(r);
+      });
+    }
+
+    function renderThreadDetail(row){
+      const pane = document.getElementById('threadDetail');
+      pane.innerHTML = '';
+      if (!row) return;
+      const header = document.createElement('div');
+      header.innerHTML = `<div style="font-weight:700;">${row.user} • ${row.thread_id}</div>
+                          <div class="meta">${row.group} • ${row.region||'(unknown region)'} • ${row.dateYMD||''} ${Number.isInteger(row.startHour)?('• '+row.startHour+':00'):''}</div>`;
+      pane.appendChild(header);
+      const labelLine = document.createElement('div');
+      const extra = (row.label === 'irrelevant') ? ` — reason: ${row.reason||'(n/a)'}${row.comment? ' — ' + row.comment : ''}` : (row.comment? ' — ' + row.comment : '');
+      labelLine.innerHTML = `<div class="meta"><span class="badge ${row.label==='relevant'?'relevant':'irrelevant'}">${row.label||'unlabeled'}</span>${extra}</div>`;
+      pane.appendChild(labelLine);
+      const msgs = DATA.threadMessages[row.key] || [];
+      if (msgs.length === 0) {
+        pane.appendChild(Object.assign(document.createElement('div'), {textContent: 'No messages found for this thread.'}));
+        return;
+      }
+      msgs.forEach(m => {
+        const d1 = document.createElement('div'); d1.className = 'msg'; d1.innerHTML = `<div class="role">USER</div><div>${escapeHtml(m.prompt)}</div><div class="meta">${m.dateYMD||''} ${m.timeHM||''}</div>`; pane.appendChild(d1);
+        const d2 = document.createElement('div'); d2.className = 'msg'; d2.innerHTML = `<div class="role">ASSISTANT</div><div>${escapeHtml(m.response)}</div><div class="meta">${m.dateYMD||''} ${m.timeHM||''}</div>`; pane.appendChild(d2);
+      });
+    }
+
+    function escapeHtml(s){
+      return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+    }
+
+    function exportCurrent(kind){
+      const stats = computeStats();
+      const rows = stats.rows.filter(r => r.label === 'relevant');
+      if (kind === 'csv') {
+        const headers = ['user','thread_id','group','label','reason','comment','startHour','dateYMD','region'];
+        const lines = [headers.join(',')].concat(rows.map(r=> headers.map(h=> JSON.stringify(r[h] ?? '')).join(',')));
+        const blob = new Blob([lines.join('\n')], {type: 'text/csv;charset=utf-8;'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'filtered_relevant_threads.csv'; a.click();
+      } else {
+        const blob = new Blob([JSON.stringify(rows, null, 2)], {type:'application/json'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'filtered_relevant_threads.json'; a.click();
+      }
+    }
+
+    async function loadAll(){
+      const status = document.getElementById('status');
+      const mode = (document.getElementById('datasetMode')||{}).value || 'demo';
+      if (mode === 'local') {
+        document.getElementById('loadLocal').click();
+        return;
+      }
+      if (location.protocol === 'file:') {
+        status.textContent = 'Detected file:// — use Local Files or run a local server (see console)';
+        console.warn('When opening via file://, browsers block fetch to local files. Options:');
+        console.warn('1) Run a local server in this folder: `python3 -m http.server 8000` and open http://localhost:8000/index.html');
+        console.warn('2) Use the Local Files section to manually select the four files.');
+        return; // avoid fetch attempts that will fail under file://
+      }
+      status.textContent = 'Loading T2…';
+      // reset
+      DATA.threads = []; DATA.meta = { regionColumn: null, groupsLoaded: [] };
+      try {
+        await ensurePlotly();
+        const [t2c, t2l] = await loadChatsAndLabels('T2');
+        buildThreadRecords(t2c, t2l, 'T2');
+        status.textContent = 'Loading T3…';
+        const [t3c, t3l] = await loadChatsAndLabels('T3');
+        buildThreadRecords(t3c, t3l, 'T3');
+        populateFilters();
+        status.textContent = `Loaded ${DATA.threads.length} threads from T2 + T3 (region: ${DATA.meta.regionColumn || 'n/a'})`;
+        refresh();
+      } catch (err) {
+        console.error(err);
+        status.textContent = 'Load failed.';
+        alert('Failed to load datasets. See console for details. ' + err);
+      }
+    }
+
+    // Wire up controls
+    document.getElementById('loadData').onclick = loadAll;
+    document.getElementById('apply').onclick = refresh;
+    document.getElementById('exportCsv').onclick = ()=> exportCurrent('csv');
+    document.getElementById('exportJson').onclick = ()=> exportCurrent('json');
+
+    document.getElementById('loadLocal').onclick = async ()=>{
+      const status = document.getElementById('status');
+      try {
+        await ensurePlotly();
+        const t2cF = document.getElementById('t2ChatsFile').files[0];
+        const t2lF = document.getElementById('t2LabelsFile').files[0];
+        const t3cF = document.getElementById('t3ChatsFile').files[0];
+        const t3lF = document.getElementById('t3LabelsFile').files[0];
+        if (!t2cF || !t2lF || !t3cF || !t3lF) { alert('Please select all four files (T2 chats/labels and T3 chats/labels).'); return; }
+
+        status.textContent = 'Reading local files…';
+        DATA.threads = []; DATA.meta = { regionColumn: null, groupsLoaded: [] };
+        const [t2c, t2l, t3c, t3l] = await Promise.all([
+          readLocalFileToRows(t2cF), readLocalFileToRows(t2lF), readLocalFileToRows(t3cF), readLocalFileToRows(t3lF)
+        ]);
+        buildThreadRecords(t2c, t2l, 'T2');
+        buildThreadRecords(t3c, t3l, 'T3');
+        populateFilters();
+        status.textContent = `Loaded ${DATA.threads.length} threads from selected files (region: ${DATA.meta.regionColumn || 'n/a'})`;
+        refresh();
+      } catch (err) {
+        console.error(err);
+        status.textContent = 'Local load failed.';
+        alert('Failed to read selected files: ' + err);
+      }
+    };
+
+    // Auto-load on open for convenience
+    // loadAll(); // uncomment to auto-load on open
+  </script>
+</body>
+</html>
